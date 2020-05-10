@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+te
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap-4.4.1-dist/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <title>Giriş Yap</title>
+    <style>
+        body {
+            background: url("assets/img/bees-4845211_1920.jpg");
+        }
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 100%;
+            -ms-transform: translateY(50%);
+            transform: translateY(50%);
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-2 col-sm-12 col-xs-12 text-content">
+                    <div class="row">
+                        <div class="card vertical-center">
+                            <div class="card-body">
+                                <form action="vendor/control.php" method="get">
+                                    <div class="form-group">
+                                        <input type="email"
+                                               class="form-control"
+                                               aria-describedby="emailHelp"
+                                               placeholder="E-Posta"
+                                               name="e_posta">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="İsim"
+                                               name="adi">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Soyisim"
+                                               name="soyadi">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date"
+                                        class="form-control"
+                                        placeholder="Doğum Yılı"
+                                        name="dogum_yili">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password"
+                                               class="form-control"
+                                               placeholder="Parola"
+                                               name="parola">
+                                    </div>
+                                    <button type="submit" class="btn btn-success" name="gonder" onclick="azKaldi();">Kayıt Ol</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="assets/js/jquery-3.4.1.slim.min.js"
+        crossorigin="anonymous"></script>
+<script src="assets/js/popper.min.js"
+        crossorigin="anonymous"></script>
+<script src="assets/bootstrap-4.4.1-dist/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+
+<script src="assets/js/temp.js"></script>
+</body>
+</html>

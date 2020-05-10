@@ -2,3 +2,23 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
+
+<Files public.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files giris.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files kayit.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files infodev.html>
+Order allow,deny
+Deny from all
+</Files>
