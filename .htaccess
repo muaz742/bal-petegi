@@ -3,12 +3,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
 
-<Files public.html>
+
+<Files giris.html>
 Order allow,deny
 Deny from all
 </Files>
 
-<Files giris.html>
+<Files infodev.html>
 Order allow,deny
 Deny from all
 </Files>
@@ -18,7 +19,32 @@ Order allow,deny
 Deny from all
 </Files>
 
-<Files infodev.html>
+<Files panel.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files polenEkle.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files profil.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files public.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files public.html>
+Order allow,deny
+Deny from all
+</Files>
+
+<Files .gitignore>
 Order allow,deny
 Deny from all
 </Files>
