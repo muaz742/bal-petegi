@@ -32,6 +32,9 @@ Hatta dilersen kapsam ayarını değiştirip takımının veya tüm kovanın ür
 
 Bu petek, polenlerini katan her bir arı tarafından gelişmektedir.
 
+Katkı sağlamak için [Projeler Sekmesi](https://github.com/muaz742/bal-petegi/projects)indeki görevleri geliştirebilir,<br>
+Öneri ve tespit ettiğin sorunları [Sorunlar Sekmesi](https://github.com/muaz742/bal-petegi/issues)nden yeni sorun oluşturup geri bildirim gönderebilirsin.
+
 ## Lisans
 
 GNU General Public License v3.0
