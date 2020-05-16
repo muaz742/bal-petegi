@@ -25,28 +25,14 @@ $(document).ready(function () {
             $("#logout").click(function () {
                 firebase.auth().signOut()
                     .then(function () {
-                        window.location.href = "login.html";
+                        window.location.href = "giris-yap.html";
                     })
             })
-
-
-            $(".sendToFireBase").click(function () {
-                var description = $('#description').val()
-                firebase.database().ref().child("users").child(current_user).child("todos").push(
-                    {
-                        description : description,
-                        completed   : false
-                    }
-                );
-
-                $("#description").val('');
-
-            });
 
             $("#addQuestionBtn").click(function () {
                 var lesson = $('#lesson').val()
                 var questionCount = $('#questionCount').val()
-                alert(lesson + questionCount)
+                alert("Soru Kaydı Eklendi 👍")
                 firebase.database().ref().child("users").child(current_user).child("records").push(
                     {
                         lesson : lesson,
@@ -77,6 +63,7 @@ $(document).ready(function () {
                             birthdate: birthdate
                         }
                     );
+                    alert("Bilgiler Güncellendi 👍")
             });
             
 
