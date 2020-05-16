@@ -41,30 +41,57 @@ $(document).ready(function () {
 
                 $("#description").val('');
 
-            })
+            });
+
+            $("#addQuestionBtn").click(function () {
+                var lesson = $('#lesson').val()
+                var questionCount = $('#questionCount').val()
+                alert(lesson + questionCount)
+                firebase.database().ref().child("users").child(current_user).child("records").push(
+                    {
+                        lesson : lesson,
+                        count   : questionCount,
+                        time: Date.now()
+                    }
+                );
+
+                $("#questionCount").val('');
+
+            });
+            
 
 
-            var todoRef = firebase.database().ref().child("users/" + current_user).child("todos");
+            $("#saveProfileBtn").click(function () {
+                    var name = $('#name').val()
+                    var surname = $('#surname').val()
+                    var city = $('#city').val()
+                    var grade = $('#grade').val()
+                    var birthdate = $('#birthdate').val()
 
-            todoRef.on("value", function (snapshot) {
+                    firebase.database().ref().child("users").child(current_user).set(
+                        {
+                            name : name,
+                            surname   : surname,
+                            city: city,
+                            grade: grade,
+                            birthdate: birthdate
+                        }
+                    );
+            });
+            
 
-                var $parent = $(".todoList").children("tbody");
 
-                $parent.html('');
+            var userRef = firebase.database().ref().child("users/" + current_user);
 
-                snapshot.forEach(function(item){
+            userRef.on("value", function (snapshot) {
 
-
-                    var completed = item.val().completed == true ? "checked" : "";
-
-
-                    var description_elem = "<td>" + item.val().description + "</td>"
-                    var completed_elem = "<td class='text-center'><input data-key='"+ item.key +"' type='checkbox' class='switchery-plugin' " + completed +"></td>"
-                    var removeBtn_elem = "<td class='text-center'><button data-key='"+ item.key +"' class='btn btn-danger btn-block removeBtn'>Sil</button></td>"
-
-                    $parent.append("<tr>" + description_elem + completed_elem + removeBtn_elem + "</tr>")
-
-                })
+                if(snapshot.val()){
+                    $('#name').val(snapshot.val().name)
+                    $('#surname').val(snapshot.val().surname)
+                    $('#city').val(snapshot.val().city)
+                    $('#grade').val(snapshot.val().grade)
+                    $('#birthdate').val(snapshot.val().birthdate)
+                }
 
                 $(".switchery-plugin").each(function () {
                     new Switchery(this);
