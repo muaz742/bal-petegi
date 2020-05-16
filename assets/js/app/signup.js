@@ -6,28 +6,13 @@ $(document).ready(function () {
     
         
         
-        var email = $('#emailReg').val();
-        var password = $('#passwordReg').val();
-        var name = $('#name');
-        var surname = $('#surname');
-        var city = $('#city');
-        var grade = $('#grade');
-        var birthdate = $('#birthdate');
-
-        alert(email)
-
+        var email = $('#email').val();
+        var password = $('#password').val();
 
         firebase.auth().createUserWithEmailAndPassword(email,password)
             .then(function () {
                 firebase.auth().signInWithEmailAndPassword(email,password)
-                    .then(function (user) {
-                        firebase.database().ref().child("users").child(user.uid).child("todos").push(
-                            {
-                                description : 'merhaba',
-                                completed   : false
-                            }
-                        );
-
+                    .then(function () {
                         window.location.href = 'index.html'
                     })
             }).catch(function (error) {

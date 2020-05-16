@@ -67,12 +67,7 @@ The above copyright notice and this permission notice shall be included in all c
                         <p>Soru Gir</p>
                     </a>
                 </li>
-                <li class="nav-item ">
-            <a class="nav-link" href="index.html">
-              <i class="material-icons">clear</i>
-              <p>Oturumu Kapat</p>
-            </a>
-          </li>
+            
             </ul>
         </div>
     </div>
@@ -100,7 +95,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Giriş Yap</h4>
@@ -109,176 +104,23 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <form>
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">E-Posta</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" class="form-control" name="email" id="email">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Parola</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" name="password" id="password">
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary pull-left">Giriş Yap</button>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">Kayıt Ol</h4>
-                                <p class="card-category">Buradan sisteme kayıt olabilirsin.</p>
-                            </div>
-                            <div class="card-body">
-                                <form action="control.php?oturum=kayit" method="post">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">E-Posta</label>
-                                                <input type="email" class="form-control" name="ePosta">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Parola</label>
-                                                <input type="password" class="form-control" name="parola">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">İsim</label>
-                                                <input type="text" class="form-control" name="adi">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Soyisim</label>
-                                                <input type="text" class="form-control" name="soyadi">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Şehir</label>
-                                                <select class="form-control" name="sehir">
-                                                    <option value="0">------</option>
-                                                    <option value="1">Adana</option>
-                                                    <option value="2">Adıyaman</option>
-                                                    <option value="3">Afyonkarahisar</option>
-                                                    <option value="4">Ağrı</option>
-                                                    <option value="5">Amasya</option>
-                                                    <option value="6">Ankara</option>
-                                                    <option value="7">Antalya</option>
-                                                    <option value="8">Artvin</option>
-                                                    <option value="9">Aydın</option>
-                                                    <option value="10">Balıkesir</option>
-                                                    <option value="11">Bilecik</option>
-                                                    <option value="12">Bingöl</option>
-                                                    <option value="13">Bitlis</option>
-                                                    <option value="14">Bolu</option>
-                                                    <option value="15">Burdur</option>
-                                                    <option value="16">Bursa</option>
-                                                    <option value="17">Çanakkale</option>
-                                                    <option value="18">Çankırı</option>
-                                                    <option value="19">Çorum</option>
-                                                    <option value="20">Denizli</option>
-                                                    <option value="21">Diyarbakır</option>
-                                                    <option value="22">Edirne</option>
-                                                    <option value="23">Elazığ</option>
-                                                    <option value="24">Erzincan</option>
-                                                    <option value="25">Erzurum</option>
-                                                    <option value="26">Eskişehir</option>
-                                                    <option value="27">Gaziantep</option>
-                                                    <option value="28">Giresun</option>
-                                                    <option value="29">Gümüşhane</option>
-                                                    <option value="30">Hakkâri</option>
-                                                    <option value="31">Hatay</option>
-                                                    <option value="32">Isparta</option>
-                                                    <option value="33">Mersin</option>
-                                                    <option value="34">İstanbul</option>
-                                                    <option value="35">İzmir</option>
-                                                    <option value="36">Kars</option>
-                                                    <option value="37">Kastamonu</option>
-                                                    <option value="38">Kayseri</option>
-                                                    <option value="39">Kırklareli</option>
-                                                    <option value="40">Kırşehir</option>
-                                                    <option value="41">Kocaeli</option>
-                                                    <option value="42">Konya</option>
-                                                    <option value="43">Kütahya</option>
-                                                    <option value="44">Malatya</option>
-                                                    <option value="45">Manisa</option>
-                                                    <option value="46">Kahramanmaraş</option>
-                                                    <option value="47">Mardin</option>
-                                                    <option value="48">Muğla</option>
-                                                    <option value="49">Muş</option>
-                                                    <option value="50">Nevşehir</option>
-                                                    <option value="51">Niğde</option>
-                                                    <option value="52">Ordu</option>
-                                                    <option value="53">Rize</option>
-                                                    <option value="54">Sakarya</option>
-                                                    <option value="55">Samsun</option>
-                                                    <option value="56">Siirt</option>
-                                                    <option value="57">Sinop</option>
-                                                    <option value="58">Sivas</option>
-                                                    <option value="59">Tekirdağ</option>
-                                                    <option value="60">Tokat</option>
-                                                    <option value="61">Trabzon</option>
-                                                    <option value="62">Tunceli</option>
-                                                    <option value="63">Şanlıurfa</option>
-                                                    <option value="64">Uşak</option>
-                                                    <option value="65">Van</option>
-                                                    <option value="66">Yozgat</option>
-                                                    <option value="67">Zonguldak</option>
-                                                    <option value="68">Aksaray</option>
-                                                    <option value="69">Bayburt</option>
-                                                    <option value="70">Karaman</option>
-                                                    <option value="71">Kırıkkale</option>
-                                                    <option value="72">Batman</option>
-                                                    <option value="73">Şırnak</option>
-                                                    <option value="74">Bartın</option>
-                                                    <option value="75">Ardahan</option>
-                                                    <option value="76">Iğdır</option>
-                                                    <option value="77">Yalova</option>
-                                                    <option value="78">Karabük</option>
-                                                    <option value="79">Kilis</option>
-                                                    <option value="80">Osmaniye</option>
-                                                    <option value="81">Düzce</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Sınıf</label>
-                                                <select class="form-control" name="sinif">
-                                                    <option value="0">------</option>
-                                                    <option value="8">8.Sınıf</option>
-                                                    <option value="9">9.Sınıf</option>
-                                                    <option value="10">10.Sınıf</option>
-                                                    <option value="11">11.Sınıf</option>
-                                                    <option value="12">12.Sınıf</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating" name="dogumYili">Doğum Tarihi</label>
-                                                <input type="date" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary pull-right">Kayıt Ol</button>
+                                    <button type="button" class="btn btn-primary pull-left" id="loginBtn">Giriş Yap</button>
+                                    <button type="button" class="btn btn-primary" id="registerBtn">Kayıt Ol</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -304,8 +146,17 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
 </div>
 
-<!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+
+<script src="assets/js/app/signin.js"></script>
+<script src="assets/js/app/signup.js"></script>
+
+
+<!--   Core JS Files   -->
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -645,22 +496,6 @@ The above copyright notice and this permission notice shall be included in all c
 </script>
 
 
-<script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyDcNJORpxWVaIFhTa23D3k6D49hu3v-dKM",
-        authDomain: "bal-petegi-cf9c9.firebaseapp.com",
-        databaseURL: "https://bal-petegi-cf9c9.firebaseio.com",
-        projectId: "bal-petegi-cf9c9",
-        storageBucket: "bal-petegi-cf9c9.appspot.com",
-        messagingSenderId: "51545633996",
-        appId: "1:51545633996:web:8020e1aa7c77dd69573e69",
-        measurementId: "G-N08LMFPGDK"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-</script>
 </body>
 
 </html>
