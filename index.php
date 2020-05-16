@@ -8,24 +8,19 @@ $talep = explode('/', $_SERVER['REQUEST_URI']);
 
 # talebe göre işlem yap
 switch ($talep[1]) {
-    case "dev": # geliştirici alanı
+    case "dev": # geliştirici alanı yolu
         include "infodev.html";
         break;
-    case "giris": # giriş ekranı
-        include "vendor/giris.php";
+    case "giris-yap": # oturum giriş yolu
+        include "vendor/giris-yap.php";
         break;
-    case "kayit": # kayıt ekranı
-        include "vendor/kayit.php";
+    case "soru-gir": # soru giriş yolu
+        include "vendor/soru-gir.php";
         break;
-    case "panel": # panel ekranları
-        if (isset($talep[2])) {
-            if ($talep[2] == 'polenEkle') # polen ekleme ekranı
-                include "vendor/polenEkle.php";
-        } else {
-            include "vendor/panel.php"; # giriş paneli
-        }
+    case "hasilat": # panel yolu
+        include "vendor/hasilat.php";
         break;
-    case "profil": # profil ekranı
+    case "oturumu-kapat": # oturumu kapat yolu
         include "vendor/profil.php";
         break;
     default:
