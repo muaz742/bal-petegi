@@ -68,11 +68,11 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-            <a class="nav-link" id="logout">
-              <i class="material-icons">clear</i>
-              <p>Oturumu Kapat</p>
-            </a>
-          </li>
+                    <a class="nav-link" id="logout">
+                        <i class="material-icons">clear</i>
+                        <p>Oturumu Kapat</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -95,37 +95,30 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
         </nav>
         <!-- End Navbar -->
+
         <div class="content">
             <div class="container-fluid">
-
                 <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-warning">
-                                <h4 class="card-title">Eklenen Sorular</h4>
-                                <p class="card-category">Eklenen Soruların Burada Görünür</p>
+                    <div class="col-md-12">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <canvas id="kisiGecmisi" width="400" height="400"></canvas>
                             </div>
-                            <div class="card-body table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-warning">
-                                    <th>Tarih</th>
-                                    <th>Ders</th>
-                                    <th>Soru Sayısı</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Deniz</td>
-                                        <td>Derya</td>
-                                        <td>102</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="card-body">
+                                <h4 class="card-title">Soru Geçmişi</h4>
+                                <p class="card-category">Kişisel Çözülen Soru Geçmişi</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">access_time</i> Zor sorular sana vız gelir.
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <footer class="footer">
             <div class="container-fluid">
                 <div class="copyright float-right">
@@ -147,16 +140,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
-<script src="assets/js/app/main.js"></script>
-<script>
-    var userRef = firebase.database().ref().child("users/" + current_user+"/records")
-
-    userRef.on("value",function (snapshot) {
-        console.log(snapshot);
-    })
-
-
-</script>
+<script src="assets/js/app/hasilat.js"></script>
 
 <!--   Core JS Files   -->
 <script src="assets/js/core/popper.min.js"></script>
@@ -427,45 +411,6 @@ The above copyright notice and this permission notice shall be included in all c
             datasets: [{
                 label: 'Haftalık Çözülen Soru',
                 data: [12, 19, 3, 5, 2, 3, 5],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-</script>
-<script>
-    var ctx = document.getElementById('kisiGecmisi').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['15.5.2020', '16.5.2020', '17.5.2020', '18.5.2020', '19.5.2020'],
-            datasets: [{
-                label: 'Günlük Çözülen Toplam Soru',
-                data: [12, 19, 3, 5, 2],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
