@@ -95,11 +95,13 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Giriş Yap</h4>
-                                <p class="card-category">Kayıtlı bilgilerin ile sisteme girebilirsin.</p>
+                                <p class="card-category">
+                                    Kayıtlı bilgilerin ile sisteme girebilirsin.
+                                </p>
                             </div>
                             <div class="card-body">
                                 <form>
@@ -120,6 +122,37 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-primary pull-left" id="loginBtn">Giriş Yap</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Kayıt Ol</h4>
+                                <p class="card-category">
+                                    E-Posta ve Parola belirleyerek sisteme kayıt olabilirsin.
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">E-Posta</label>
+                                                <input type="email" class="form-control" name="email" id="emailReg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Parola</label>
+                                                <input type="password" class="form-control" name="password" id="passwordReg">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <button type="button" class="btn btn-primary" id="registerBtn">Kayıt Ol</button>
                                     <div class="clearfix"></div>
                                 </form>
@@ -153,7 +186,7 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
 
 <script src="assets/js/app/signin.js"></script>
-<script src="assets/js/app/signup.js"></script>
+<script src="assets/js/app/signup-0.1.1.js"></script>
 
 
 <!--   Core JS Files   -->
