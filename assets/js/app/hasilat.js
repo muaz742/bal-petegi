@@ -19,7 +19,14 @@ $(document).ready(function () {
         if (user) {
 
             current_user = user.uid;
-            console.log(current_user);
+            // console.log(current_user);
+            
+            $("#logout").click(function () {
+                firebase.auth().signOut()
+                    .then(function () {
+                        window.location.href = "giris-yap.html";
+                    })
+            })
 
             /*            $(".user-text").text(user.email);
 
@@ -103,8 +110,8 @@ $(document).ready(function () {
 
 
         } else {
-            // window.location.href = "giris-yap.html";
-            console.log("oturum yok");
+            window.location.href = "giris-yap.html";
+            // console.log("oturum yok");
         }
     })
 
@@ -117,16 +124,16 @@ users.on('value', function (snapshot) {
     var keys = Object.keys(shot);
     var sonuc = [];
 
-    console.log(keys.length);
+    // console.log(keys.length);
 
     for (i = 0; i < keys.length; i++) {
-        console.log(epochToDate(shot[keys[i]]['time']));
+        // console.log(epochToDate(shot[keys[i]]['time']));
         var tarih = epochToDate(shot[keys[i]]['time']);
 
-        console.log(shot[keys[i]]['lesson']);
+        // console.log(shot[keys[i]]['lesson']);
         var ders = shot[keys[i]]['lesson'];
 
-        console.log(shot[keys[i]]['count']);
+        // console.log(shot[keys[i]]['count']);
         var miktar = shot[keys[i]]['count'];
         Number(miktar);
 
@@ -138,7 +145,7 @@ users.on('value', function (snapshot) {
 
     }
 
-    console.log(sonuc);
+    // console.log(sonuc);
     var tarihler = [];
     var soruSayilari = [];
     for (var key in sonuc) {
