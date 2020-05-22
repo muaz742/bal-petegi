@@ -44,6 +44,22 @@ $(document).ready(function () {
                 $("#questionCount").val('');
 
             });
+
+            $("#addLessonDuration").click(function () {
+                var subject = $('#subject').val()
+                var lessonDuration = $('#lessonDuration').val()
+                alert("Çalışma Süresi Eklendi 👍")
+                firebase.database().ref().child("users").child(current_user).child("duration").push(
+                    {
+                        lesson : subject,
+                        count   : lessonDuration,
+                        time: Date.now()
+                    }
+                );
+
+                $("#questionCount").val('');
+
+            });
             
 
 
