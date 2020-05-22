@@ -100,7 +100,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-header card-header-success">
                                 <h4 class="card-title">Soru Gir</h4>
@@ -136,7 +136,49 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-primary pull-left" id="addQuestionBtn">Kaydet</button>
+                                    <button type="button" class="btn btn-success pull-left" id="addQuestionBtn">Kaydet</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-success">
+                                <h4 class="card-title">Konu Çalışma Süresi Gir</h4>
+                                <p class="card-category">Çalıştığın konuya ne kadar zaman harcadın?</p>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Ders</label>
+                                                <select class="form-control" name="lesson" id="subject">
+                                                    <option value="------">------</option>
+                                                    <option value="Türkçe">Türkçe</option>
+                                                    <option value="Matematik">Matematik</option>
+                                                    <option value="Fizik">Fizik</option>
+                                                    <option value="Kimya">Kimya</option>
+                                                    <option value="Biyoloji">Biyoloji</option>
+                                                    <option value="Coğrafya">Coğrafya</option>
+                                                    <option value="Tarih">Tarih</option>
+                                                    <option value="Din Kültürü">Din Kültürü</option>
+                                                    <option value="Felsefe">Felsefe</option>
+                                                    <option value="İngilizce">Yabancı Dil</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Süre (dk)</label>
+                                                <input type="number" class="form-control" id="lessonDuration">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success pull-left" id="addLessonDuration">Kaydet</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
