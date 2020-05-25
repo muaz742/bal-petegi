@@ -14,7 +14,7 @@ firebase.initializeApp(config);
 var current_user = "";
 
 $(document).ready(function () {
-
+    // giriş kontrolü yap
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
 
@@ -109,7 +109,91 @@ $(document).ready(function () {
                         })*/
 
 
+            var users = firebase.database().ref().child('users');
+            users.on('value', function (snapshot) {
+                var shot = snapshot.val()[current_user]['records'];
+                var keys = Object.keys(shot);
+                var sonuc = [];
+                var sonucHaftalik = [];
+
+                // console.log(keys.length);
+
+                // geçen haftaya ait zaman değerini hesapla
+                var gecenHafta = new Date();
+                gecenHafta.setDate(gecenHafta.getDate() - 7)
+                gecenHafta = gecenHafta.getTime();
+
+                // soru kayıtlarını işle
+                for (i = 0; i < keys.length; i++) {
+
+                    // zaman kaydını al, tarihe dönüştür
+                    var tarih = epochToDate(shot[keys[i]]['time']);
+
+                    // ders kaydını al
+                    var ders = shot[keys[i]]['lesson'];
+
+                    // soru miktarını al
+                    var miktar = shot[keys[i]]['count'];
+                    Number(miktar);
+
+                    // hafta içinde çözülen soru miktarını derslere göre topla
+                    if (shot[keys[i]]['time']>gecenHafta){
+                        console.log("control 0");
+                        if (sonucHaftalik[ders]==null){
+                            sonucHaftalik[ders] = Number(miktar);
+                        }else {
+                            sonucHaftalik[ders] = sonucHaftalik[ders] + Number(miktar);
+                        }
+                    }
+
+                    // toplam çözülen soru miktarını günlere göre topla
+                    if (sonuc[tarih]==null){
+                        sonuc[tarih]=Number(miktar);
+                    }else {
+                        sonuc[tarih]=sonuc[tarih]+Number(miktar);
+                    }
+
+                }
+
+                // toplanan haftalık verileri grafiğe yazdır
+                var haftalikDersler = [];
+                var haftalikSorular = [];
+                for (var key in sonucHaftalik){
+                    if (sonucHaftalik.hasOwnProperty(key)) {
+                        haftalikDersler.push(key)
+                        haftalikSorular.push(sonucHaftalik[key]);
+                    }
+                }
+                haftalikGrafik(haftalikDersler,haftalikSorular);
+
+                // toplanan günlük verileri grafiğe yazdır
+                var tarihler = [];
+                var soruSayilari = [];
+                for (var key in sonuc) {
+                    if (sonuc.hasOwnProperty(key)) {
+
+                        // Printing Keys
+                        tarihler.push(key)
+                        soruSayilari.push(sonuc[key]);
+                    }
+                }
+                gunlukGrafik(tarihler,soruSayilari);
+
+                /*
+                    shot.forEach(function (item) {
+
+
+                        console.log(item.key);
+                        console.log(item.key['time']);
+
+
+                    });
+                */
+
+            });
+
         } else {
+            // giriş yapılmamış ise giriş ekranına yönlendir
             window.location.href = "giris-yap.html";
             // console.log("oturum yok");
         }
@@ -118,58 +202,6 @@ $(document).ready(function () {
 
 })
 
-var users = firebase.database().ref().child('users');
-users.on('value', function (snapshot) {
-    var shot = snapshot.val()[current_user]['records'];
-    var keys = Object.keys(shot);
-    var sonuc = [];
-
-    // console.log(keys.length);
-
-    for (i = 0; i < keys.length; i++) {
-        // console.log(epochToDate(shot[keys[i]]['time']));
-        var tarih = epochToDate(shot[keys[i]]['time']);
-
-        // console.log(shot[keys[i]]['lesson']);
-        var ders = shot[keys[i]]['lesson'];
-
-        // console.log(shot[keys[i]]['count']);
-        var miktar = shot[keys[i]]['count'];
-        Number(miktar);
-
-        if (sonuc[tarih]==null){
-            sonuc[tarih]=Number(miktar);
-        }else {
-            sonuc[tarih]=sonuc[tarih]+Number(miktar);
-        }
-
-    }
-
-    // console.log(sonuc);
-    var tarihler = [];
-    var soruSayilari = [];
-    for (var key in sonuc) {
-        if (sonuc.hasOwnProperty(key)) {
-
-            // Printing Keys
-            tarihler.push(key)
-            soruSayilari.push(sonuc[key]);
-        }
-    }
-    gunlukGrafik(tarihler,soruSayilari);
-
-    /*
-        shot.forEach(function (item) {
-
-
-            console.log(item.key);
-            console.log(item.key['time']);
-
-
-        });
-    */
-
-});
 
 function epochToDate(date) {
     var d = new Date(date),
@@ -185,6 +217,7 @@ function epochToDate(date) {
     return [day, month, year].join('.');
 }
 
+/* her tarihe ait soru sayısını çizgi grafikte gösterir */
 function gunlukGrafik(tarihler, soruSayilari) {
     var ctx = document.getElementById('kisiGecmisi').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -193,6 +226,47 @@ function gunlukGrafik(tarihler, soruSayilari) {
             labels: tarihler,
             datasets: [{
                 label: 'Günlük Çözülen Toplam Soru',
+                data: soruSayilari,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+/* her derse ait soru sayısını bar grafikte gösterir */
+function haftalikGrafik(dersler, soruSayilari) {
+    var ctx = document.getElementById('haftalikDers').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dersler,
+            datasets: [{
+                label: 'Haftalık Çözülen Soru',
                 data: soruSayilari,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
