@@ -20,13 +20,13 @@ $(document).ready(function () {
 
             current_user = user.uid;
             // console.log(current_user);
-            
+
             $("#logout").click(function () {
                 firebase.auth().signOut()
                     .then(function () {
                         window.location.href = "giris-yap.html";
                     })
-            })
+            });
 
             /*            $(".user-text").text(user.email);
 
@@ -116,6 +116,7 @@ $(document).ready(function () {
                 var sonuc = [];
                 var sonucHaftalik = [];
                 var sonucGunluk = [];
+                var listeGirilenSorular = {};
 
                 // console.log(keys.length);
 
@@ -129,7 +130,7 @@ $(document).ready(function () {
                 gecenHafta = gecenHafta.getTime();
 
                 // son gün dönümüne ait zaman değerini hesapla
-                var geceYarisi = new Date(simdi.getFullYear(),simdi.getMonth(),simdi.getDate());
+                var geceYarisi = new Date(simdi.getFullYear(), simdi.getMonth(), simdi.getDate());
                 geceYarisi = geceYarisi.getTime();
 
                 // soru kayıtlarını işle
@@ -137,6 +138,7 @@ $(document).ready(function () {
 
                     // zaman kaydını al, tarihe dönüştür
                     var tarih = epochToDate(shot[keys[i]]['time']);
+                    var saat = epochToTime(shot[keys[i]]['time']);
 
                     // ders kaydını al
                     var ders = shot[keys[i]]['lesson'];
@@ -146,53 +148,78 @@ $(document).ready(function () {
                     Number(miktar);
 
                     // gün içinde çözülen soru miktarını derslere göre topla
-                    if (shot[keys[i]]['time']>geceYarisi){
-                        if (sonucGunluk[ders]==null){
+                    if (shot[keys[i]]['time'] > geceYarisi) {
+                        if (sonucGunluk[ders] == null) {
                             sonucGunluk[ders] = Number(miktar);
-                        }else {
+                        } else {
                             sonucGunluk[ders] = sonucGunluk[ders] + Number(miktar);
                         }
                     }
 
                     // hafta içinde çözülen soru miktarını derslere göre topla
-                    if (shot[keys[i]]['time']>gecenHafta){
-                        if (sonucHaftalik[ders]==null){
+                    if (shot[keys[i]]['time'] > gecenHafta) {
+                        if (sonucHaftalik[ders] == null) {
                             sonucHaftalik[ders] = Number(miktar);
-                        }else {
+                        } else {
                             sonucHaftalik[ders] = sonucHaftalik[ders] + Number(miktar);
                         }
                     }
 
                     // toplam çözülen soru miktarını günlere göre topla
-                    if (sonuc[tarih]==null){
-                        sonuc[tarih]=Number(miktar);
-                    }else {
-                        sonuc[tarih]=sonuc[tarih]+Number(miktar);
+                    if (sonuc[tarih] == null) {
+                        sonuc[tarih] = Number(miktar);
+                    } else {
+                        sonuc[tarih] = sonuc[tarih] + Number(miktar);
                     }
 
+                    // girilen soru kayıtlarını topla
+                    console.log(tarih);
+                    listeGirilenSorular[shot[keys[i]]['time']] = {
+                        "tarih": tarih,
+                        "saat": saat,
+                        "ders": ders,
+                        "miktar": miktar,
+                        "key": keys[i]
+                    }
+                }
+
+                console.log(listeGirilenSorular);
+
+                $('#sorular').text(" ");
+                for (var key in listeGirilenSorular) {
+                    $('#sorular').append("<tr>\n" +
+                        "<td>" + listeGirilenSorular[key].tarih + "</td>\n" +
+                        "<td>" + listeGirilenSorular[key].saat + "</td>\n" +
+                        "<td>" + listeGirilenSorular[key].ders + "</td>\n" +
+                        "<td>" + listeGirilenSorular[key].miktar + "</td>\n" +
+                        "<td>" +
+                        "<button type=\"button\" rel=\"tooltip\" title=\"\" class=\"btn btn-danger btn-link btn-sm\" data-original-title=\"Sil\" onclick=\"soruSil('" + listeGirilenSorular[key].key + "')\"'>" +
+                        "<i class=\"material-icons\">close</i><div class=\"ripple-container\"></div></button>" +
+                        "</td>\n" +
+                        "</tr>");
                 }
 
                 // toplanan günlük verileri derse göre grafiğe yazdır
                 var gunlukDersler = [];
                 var gunlukSorular = [];
-                for (var key in sonucGunluk){
+                for (var key in sonucGunluk) {
                     if (sonucGunluk.hasOwnProperty(key)) {
                         gunlukDersler.push(key)
                         gunlukSorular.push(sonucGunluk[key]);
                     }
                 }
-                gunlukGrafikDersli(gunlukDersler,gunlukSorular);
+                gunlukGrafikDersli(gunlukDersler, gunlukSorular);
 
                 // toplanan haftalık verileri derse göre grafiğe yazdır
                 var haftalikDersler = [];
                 var haftalikSorular = [];
-                for (var key in sonucHaftalik){
+                for (var key in sonucHaftalik) {
                     if (sonucHaftalik.hasOwnProperty(key)) {
                         haftalikDersler.push(key)
                         haftalikSorular.push(sonucHaftalik[key]);
                     }
                 }
-                haftalikGrafik(haftalikDersler,haftalikSorular);
+                haftalikGrafik(haftalikDersler, haftalikSorular);
 
                 // toplanan günlük verileri tarihe göre grafiğe yazdır
                 var tarihler = [];
@@ -205,7 +232,7 @@ $(document).ready(function () {
                         soruSayilari.push(sonuc[key]);
                     }
                 }
-                gunlukGrafik(tarihler,soruSayilari);
+                gunlukGrafik(tarihler, soruSayilari);
 
                 /*
                     shot.forEach(function (item) {
@@ -230,6 +257,9 @@ $(document).ready(function () {
 
 })
 
+function soruSil(key) {
+    firebase.database().ref("users/" + current_user).child("records").child(key).remove();
+}
 
 function epochToDate(date) {
     var d = new Date(date),
@@ -243,6 +273,24 @@ function epochToDate(date) {
         day = '0' + day;
 
     return [day, month, year].join('.');
+}
+
+function epochToTime(date) {
+    var d = new Date(date),
+        hours = '' + d.getHours(),
+        minutes = '' + d.getMinutes(),
+        seconds = d.getSeconds();
+
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    return [hours, minutes, seconds].join(':');
 }
 
 /* her tarihe ait soru sayısını çizgi grafikte gösterir */
