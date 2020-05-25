@@ -70,7 +70,7 @@ $(document).ready(function () {
                     var grade = $('#grade').val()
                     var birthdate = $('#birthdate').val()
 
-                    firebase.database().ref().child("users").child(current_user).set(
+                    firebase.database().ref().child("users").child(current_user).update(
                         {
                             name : name,
                             surname   : surname,

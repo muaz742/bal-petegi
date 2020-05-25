@@ -1,178 +1,283 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 
 <head>
-  <title>Bal Peteği</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- Material Kit CSS -->
-  <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
 
-  <script src="assets/js/core/jquery.min.js"></script>
-  <script src="assets/js/app/main.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+    <!-- Gerekli Meta Verileri -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <!-- Birincil Meta Etiketleri -->
+    <title>Bal Peteği</title>
+    <meta name="title" content="Bal Peteği">
+    <meta name="description" content="Dr. Polaton ile Arıların Polenlerini Topladığı Arı Kovanı">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/organic.svg">
+    <link rel="shortcut icon" href="assets/img/organic.svg" type="image/x-icon">
+
+    <!-- Open Graph / Facebook Önizleme Etiketleri -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://petek.muaz712.com/">
+    <meta property="og:title" content="Bal Peteği">
+    <meta property="og:description" content="Dr. Polaton ile Arıların Polenlerini Topladığı Arı Kovanı">
+    <meta property="og:image"
+          content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+
+    <!-- Twitter Önizleme Etiketleri -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://petek.muaz712.com/">
+    <meta property="twitter:title" content="Bal Peteği">
+    <meta property="twitter:description" content="Dr. Polaton ile Arıların Polenlerini Topladığı Arı Kovanı">
+    <meta property="twitter:image"
+          content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+
+    <!-- Yazı Tipleri ve Simgeler -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- Material Kit CSS -->
+    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
+
+    <!-- jQquery ve Firebase Kütüphaneleri -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/app/main.js"></script>
+    <!--
+    <script src="https://www.gstatic.com/firebase/7.14.5/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+  -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+
+    <!-- Yüklenme Öncesi İşlemler -->
+    <script src="dev/beforeLoad.js"></script>
+
 
 </head>
 
 <body>
-  <div class="wrapper ">
+<div class="wrapper ">
 
+    <!-- Sidebar -->
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
-      <div class="logo">
-        <a class="simple-text logo-normal">
-          Arı Kovanı
-        </a>
-      </div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="hasilat.html">
-              <i class="material-icons">dashboard</i>
-              <p>Bal Hasılatı</p>
+          Tip 2: you can also add an image using data-image tag
+      -->
+        <div class="logo">
+            <a class="simple-text logo-normal">
+                Arı Kovanı
             </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="soru-gir.html">
-              <i class="material-icons">alarm_add</i>
-              <p>Soru Gir</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" id="logout">
-              <i class="material-icons">clear</i>
-              <p>Oturumu Kapat</p>
-            </a>
-          </li>
-        </ul>
-      </div>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="hasilat.html">
+                        <i class="material-icons">dashboard</i>
+                        <p>Bal Hasılatı</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="soru-gir.html">
+                        <i class="material-icons">alarm_add</i>
+                        <p>Soru Gir</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" id="logout">
+                        <i class="material-icons">clear</i>
+                        <p>Oturumu Kapat</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-
+    <!-- End Sidebar -->
 
     <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Profil</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">
-                  <i class="material-icons">notifications</i> Notifications
-                </a>
-              </li>
-              <!-- your navbar here -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Profil Bilgileri</h4>
-                  <p class="card-category">Profil bilgilerini buradan güncelleyebilirsin</p>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:;">Profil</a>
                 </div>
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">İsim</label>
-                          <input type="text" class="form-control" id="name">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Soyisim</label>
-                          <input type="text" class="form-control" id='surname'>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Şehir</label>
-                          <input type="text" class="form-control" id='city'>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Sınıf</label>
-                          <input type="text" class="form-control" id='grade'>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Doğum Tarihi</label>
-                          <input type="date" class="form-control" id="birthdate">
-                        </div>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-primary pull-right" id="saveProfileBtn">Bilgileri Güncelle</button>
-                    <div class="clearfix"></div>
-                  </form>
-                </div>
-              </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                </button>
             </div>
-          </div>
+        </nav>
+        <!-- End Navbar -->
+
+        <!-- Content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Profil Bilgileri</h4>
+                                <p class="card-category">Profil bilgilerini buradan güncelleyebilirsin</p>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">İsim</label>
+                                                <input type="text" class="form-control" id="name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Soyisim</label>
+                                                <input type="text" class="form-control" id='surname'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Şehir</label>
+                                                <input type="text" class="form-control" id='city'>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Sınıf</label>
+                                                <input type="text" class="form-control" id='grade'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Doğum Tarihi</label>
+                                                <input type="date" class="form-control" id="birthdate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary pull-right" id="saveProfileBtn">
+                                        Bilgileri Güncelle
+                                    </button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-          </div>
-          <!-- your footer here -->
-        </div>
-      </footer>
+        <!-- End Content -->
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="float-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright float-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    , made with <i class="material-icons">favorite</i> by
+                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                </div>
+                <!-- your footer here -->
+            </div>
+        </footer>
+        <!-- End Footer -->
+
     </div>
-  </div>
+</div>
 
-  <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js"></script>
-  <script src="assets/js/core/popper.min.js"></script>
-  <script src="assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Diğer JS Kütüphaneleri -->
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+
+<!-- Yüklenme Sonrası İşlemler -->
+<script src="dev/afterLoad.js"></script>
+
+<!-- TODO sayfa yükleniyorken animasyon gösterilmeli -->
+<!-- Loader -->
+<style>
+    .loader {
+        background: #e74c3c;
+        text-align: center;
+        font-family: 'Comfortaa', cursive;
+    }
+
+    svg {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        display: inline-block;
+    }
+</style>
+<div class="loader">
+    <svg version="1.1"
+         id="L2"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         x="0px" y="0px"
+         viewBox="0 0 100 100"
+         enable-background="new 0 0 100 100"
+         xml:space="preserve">
+                    <circle fill="none"
+                            stroke="#fff"
+                            stroke-width="4"
+                            stroke-miterlimit="10"
+                            cx="50" cy="50" r="48"/>
+        <line fill="none"
+              stroke-linecap="round"
+              stroke="#fff"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              x1="50" y1="50"
+              x2="85" y2="50.5">
+        <animateTransform
+                attributeName="transform"
+                dur="2s"
+                type="rotate"
+                from="0 50 50"
+                to="360 50 50"
+                repeatCount="indefinite"/>
+      </line>
+        <line fill="none"
+              stroke-linecap="round"
+              stroke="#fff"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              x1="50" y1="50"
+              x2="49.5" y2="74">
+        <animateTransform
+                attributeName="transform"
+                dur="15s"
+                type="rotate"
+                from="0 50 50"
+                to="360 50 50"
+                repeatCount="indefinite"/>
+      </line>
+                </svg>
+</div>
+<!-- End Loader -->
 
 </body>
 
