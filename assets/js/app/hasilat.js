@@ -115,13 +115,22 @@ $(document).ready(function () {
                 var keys = Object.keys(shot);
                 var sonuc = [];
                 var sonucHaftalik = [];
+                var sonucGunluk = [];
 
                 // console.log(keys.length);
 
+
+                // şimdiki zamana ait değeri hesapla
+                var simdi = new Date();
+
                 // geçen haftaya ait zaman değerini hesapla
                 var gecenHafta = new Date();
-                gecenHafta.setDate(gecenHafta.getDate() - 7)
+                gecenHafta.setDate(simdi.getDate() - 7)
                 gecenHafta = gecenHafta.getTime();
+
+                // son gün dönümüne ait zaman değerini hesapla
+                var geceYarisi = new Date(simdi.getFullYear(),simdi.getMonth(),simdi.getDate());
+                geceYarisi = geceYarisi.getTime();
 
                 // soru kayıtlarını işle
                 for (i = 0; i < keys.length; i++) {
@@ -136,9 +145,17 @@ $(document).ready(function () {
                     var miktar = shot[keys[i]]['count'];
                     Number(miktar);
 
+                    // gün içinde çözülen soru miktarını derslere göre topla
+                    if (shot[keys[i]]['time']>geceYarisi){
+                        if (sonucGunluk[ders]==null){
+                            sonucGunluk[ders] = Number(miktar);
+                        }else {
+                            sonucGunluk[ders] = sonucGunluk[ders] + Number(miktar);
+                        }
+                    }
+
                     // hafta içinde çözülen soru miktarını derslere göre topla
                     if (shot[keys[i]]['time']>gecenHafta){
-                        console.log("control 0");
                         if (sonucHaftalik[ders]==null){
                             sonucHaftalik[ders] = Number(miktar);
                         }else {
@@ -155,7 +172,18 @@ $(document).ready(function () {
 
                 }
 
-                // toplanan haftalık verileri grafiğe yazdır
+                // toplanan günlük verileri derse göre grafiğe yazdır
+                var gunlukDersler = [];
+                var gunlukSorular = [];
+                for (var key in sonucGunluk){
+                    if (sonucGunluk.hasOwnProperty(key)) {
+                        gunlukDersler.push(key)
+                        gunlukSorular.push(sonucGunluk[key]);
+                    }
+                }
+                gunlukGrafikDersli(gunlukDersler,gunlukSorular);
+
+                // toplanan haftalık verileri derse göre grafiğe yazdır
                 var haftalikDersler = [];
                 var haftalikSorular = [];
                 for (var key in sonucHaftalik){
@@ -166,7 +194,7 @@ $(document).ready(function () {
                 }
                 haftalikGrafik(haftalikDersler,haftalikSorular);
 
-                // toplanan günlük verileri grafiğe yazdır
+                // toplanan günlük verileri tarihe göre grafiğe yazdır
                 var tarihler = [];
                 var soruSayilari = [];
                 for (var key in sonuc) {
@@ -267,6 +295,47 @@ function haftalikGrafik(dersler, soruSayilari) {
             labels: dersler,
             datasets: [{
                 label: 'Haftalık Çözülen Soru',
+                data: soruSayilari,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+/* her derse ait soru sayısını bar grafikte gösterir */
+function gunlukGrafikDersli(dersler, soruSayilari) {
+    var ctx = document.getElementById('gunlukDers').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dersler,
+            datasets: [{
+                label: 'Bugünlük Çözülen Soru',
                 data: soruSayilari,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
