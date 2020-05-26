@@ -109,14 +109,19 @@ $(document).ready(function () {
                         })*/
 
 
-            var users = firebase.database().ref().child('users');
+            var users = firebase.database().ref().child('users').child(current_user);
             users.on('value', function (snapshot) {
-                var shot = snapshot.val()[current_user]['records'];
+                var shot = snapshot.val()['records'];
                 var keys = Object.keys(shot);
+                var duration = snapshot.val()['duration'];
                 var sonuc = [];
                 var sonucHaftalik = [];
                 var sonucGunluk = [];
                 var listeGirilenSorular = {};
+                var sonucGunlukSureDersli = [];
+                var sonucHaftalikDersli = [];
+                var sonucDersli = [];
+                var listeGirilenSureler = {}
 
                 // console.log(keys.length);
 
@@ -173,7 +178,6 @@ $(document).ready(function () {
                     }
 
                     // girilen soru kayıtlarını topla
-                    console.log(tarih);
                     listeGirilenSorular[shot[keys[i]]['time']] = {
                         "tarih": tarih,
                         "saat": saat,
@@ -183,17 +187,69 @@ $(document).ready(function () {
                     }
                 }
 
-                console.log(listeGirilenSorular);
+                // süre kayıtlarını işle
+                for (key in duration){
+
+                    var sureDers = duration[key]['lesson'];
+                    var sureMiktar = duration[key]['count'];
+                    var sureTarih = epochToDate(duration[key]['time']);
+                    var sureSaat = epochToTime(duration[key]['time']);
+
+                    // gün içinde çalışılan süreleri derslere göre topla
+                    if (geceYarisi<duration[key]['time']){
+                        if(sonucGunlukSureDersli[sureDers]==null){
+                            sonucGunlukSureDersli[sureDers] = Number(sureMiktar);
+                        }else {
+                            sonucGunlukSureDersli[sureDers] = sonucGunlukSureDersli[sureDers] + Number(sureMiktar);
+                        }
+                    }
+
+                    // hafta içinde çalışılan süreyi derslere göre topla
+                    if (gecenHafta<duration[key]['time']) {
+                        if (sonucHaftalikDersli[sureDers] == null) {
+                            sonucHaftalikDersli[sureDers] = Number(sureMiktar);
+                        } else {
+                            sonucHaftalikDersli[sureDers] = sonucHaftalikDersli[sureDers] + Number(sureMiktar);
+                        }
+                    }
+                    // toplam çalışılan süreyi günlere göre topla
+                    if (sonucDersli[sureTarih] == null) {
+                        sonucDersli[sureTarih] = Number(sureMiktar);
+                    } else {
+                        sonucDersli[sureTarih] = sonucDersli[sureTarih] + Number(sureMiktar);
+                    }
+
+                    // girilen soru kayıtlarını topla
+                    listeGirilenSureler[duration[key]['time']] = {
+                        "tarih": sureTarih,
+                        "saat": sureSaat,
+                        "ders": sureDers,
+                        "miktar": sureMiktar,
+                        "key": key
+                    }
+                }
 
                 $('#sorular').text(" ");
                 for (var key in listeGirilenSorular) {
                     $('#sorular').append("<tr>\n" +
-                        "<td>" + listeGirilenSorular[key].tarih + "</td>\n" +
-                        "<td>" + listeGirilenSorular[key].saat + "</td>\n" +
+                        "<td>" + listeGirilenSorular[key].tarih + "<br>"+listeGirilenSorular[key].saat+"</td>\n" +
                         "<td>" + listeGirilenSorular[key].ders + "</td>\n" +
                         "<td>" + listeGirilenSorular[key].miktar + "</td>\n" +
                         "<td>" +
                         "<button type=\"button\" rel=\"tooltip\" title=\"\" class=\"btn btn-danger btn-link btn-sm\" data-original-title=\"Sil\" onclick=\"soruSil('" + listeGirilenSorular[key].key + "')\"'>" +
+                        "<i class=\"material-icons\">close</i><div class=\"ripple-container\"></div></button>" +
+                        "</td>\n" +
+                        "</tr>");
+                }
+
+                $('#sureler').text(" ");
+                for (var key in listeGirilenSureler) {
+                    $('#sureler').append("<tr>\n" +
+                        "<td>" + listeGirilenSureler[key].tarih + "<br>"+listeGirilenSureler[key].saat+"</td>\n" +
+                        "<td>" + listeGirilenSureler[key].ders + "</td>\n" +
+                        "<td>" + listeGirilenSureler[key].miktar + "</td>\n" +
+                        "<td>" +
+                        "<button type=\"button\" rel=\"tooltip\" title=\"\" class=\"btn btn-danger btn-link btn-sm\" data-original-title=\"Sil\" onclick=\"sureSil('" + listeGirilenSureler[key].key + "')\"'>" +
                         "<i class=\"material-icons\">close</i><div class=\"ripple-container\"></div></button>" +
                         "</td>\n" +
                         "</tr>");
@@ -226,7 +282,6 @@ $(document).ready(function () {
                 var soruSayilari = [];
                 for (var key in sonuc) {
                     if (sonuc.hasOwnProperty(key)) {
-
                         // Printing Keys
                         tarihler.push(key)
                         soruSayilari.push(sonuc[key]);
@@ -234,16 +289,39 @@ $(document).ready(function () {
                 }
                 gunlukGrafik(tarihler, soruSayilari);
 
-                /*
-                    shot.forEach(function (item) {
+                // toplanan günlük çalışma sürelerini derse göre grafiğe yazdır
+                var gunlukDerslerKonu = [];
+                var gunlukSurelerKonu = [];
+                for (key in sonucGunlukSureDersli){
+                    if (sonucGunlukSureDersli.hasOwnProperty(key)) {
+                        gunlukDerslerKonu.push(key)
+                        gunlukSurelerKonu.push(sonucGunlukSureDersli[key]);
+                    }
+                }
+                gunlukSureGrafikDersli(gunlukDerslerKonu,gunlukSurelerKonu);
 
+                // toplanan haftalık çalışma sürelerini derse göre grafiğe yazdır
+                var haftalikDerslerKonu = [];
+                var haftalikSorularKonu = [];
+                for (var key in sonucHaftalikDersli) {
+                    if (sonucHaftalikDersli.hasOwnProperty(key)) {
+                        haftalikDerslerKonu.push(key)
+                        haftalikSorularKonu.push(sonucHaftalikDersli[key]);
+                    }
+                }
+                haftalikSureGrafik(haftalikDerslerKonu, haftalikSorularKonu);
 
-                        console.log(item.key);
-                        console.log(item.key['time']);
-
-
-                    });
-                */
+                // toplanan günlük çalışma sürelerini tarihe göre grafiğe yazdır
+                var tarihlerKonu = [];
+                var soruSayilariKonu = [];
+                for (var key in sonucDersli) {
+                    if (sonucDersli.hasOwnProperty(key)) {
+                        // Printing Keys
+                        tarihlerKonu.push(key)
+                        soruSayilariKonu.push(sonucDersli[key]);
+                    }
+                }
+                gunlukSureGrafik(tarihlerKonu, soruSayilariKonu);
 
             });
 
@@ -259,6 +337,10 @@ $(document).ready(function () {
 
 function soruSil(key) {
     firebase.database().ref("users/" + current_user).child("records").child(key).remove();
+}
+
+function sureSil(key) {
+    firebase.database().ref("users/" + current_user).child("duration").child(key).remove();
 }
 
 function epochToDate(date) {
@@ -301,7 +383,7 @@ function gunlukGrafik(tarihler, soruSayilari) {
         data: {
             labels: tarihler,
             datasets: [{
-                label: 'Günlük Çözülen Toplam Soru',
+                label: 'Çözülen Toplam Sorular',
                 data: soruSayilari,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -385,6 +467,129 @@ function gunlukGrafikDersli(dersler, soruSayilari) {
             datasets: [{
                 label: 'Bugünlük Çözülen Soru',
                 data: soruSayilari,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+/* her tarihe ait çalışma süresini çizgi grafikte gösterir */
+function gunlukSureGrafik(tarihler, sureler) {
+    var ctx = document.getElementById('kisiGecmisiSure').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: tarihler,
+            datasets: [{
+                label: 'Toplam Çalışılan Süre',
+                data: sureler,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+/* her derse ait çalışma süresini haftalık bar grafikte gösterir */
+function haftalikSureGrafik(dersler, sureler) {
+    var ctx = document.getElementById('haftalikDersSure').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dersler,
+            datasets: [{
+                label: 'Haftalık Çalışılan Süre',
+                data: sureler,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+/* her derse ait çalışma süresini günlük bar grafikte gösterir */
+function gunlukSureGrafikDersli(dersler, sureler) {
+    var ctx = document.getElementById('gunlukDersSure').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dersler,
+            datasets: [{
+                label: 'Bugünlük Çalışılan Süre',
+                data: sureler,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
