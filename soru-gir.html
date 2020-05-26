@@ -1,4 +1,3 @@
-
 <!--
 =========================================================
 Material Dashboard - v2.1.2
@@ -30,6 +29,10 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/demo/demo.css" rel="stylesheet"/>
+
+    <!-- Yüklenme Öncesi İşlemler -->
+    <script src="assets/js/app/beforeLoad-soru-gir.js"></script>
+
 </head>
 
 <body class="">
@@ -63,11 +66,11 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="nav-item ">
-            <a class="nav-link" href="index.html">
-              <i class="material-icons">clear</i>
-              <p>Oturumu Kapat</p>
-            </a>
-          </li>
+                    <a class="nav-link" href="index.html">
+                        <i class="material-icons">clear</i>
+                        <p>Oturumu Kapat</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -81,7 +84,8 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="navbar-wrapper">
                     <a class="navbar-brand">Soru Gir</a>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
@@ -96,12 +100,30 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-success">
+                            <div class="card-header card-header-info">
                                 <h4 class="card-title">Soru Gir</h4>
                                 <p class="card-category">Topladığın polenleri buradan kayıt edebilirsin.</p>
                             </div>
                             <div class="card-body">
                                 <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Gün / Ay / Yıl</label>
+                                                <input type="date" class="form-control" id="dateSoru">
+                                                <script>
+
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Saat / Dakika / Saniye</label>
+                                                <input type="time" class="form-control" id="timeSoru">
+                                                <a id="millisecondSoru" hidden></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
@@ -130,7 +152,8 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-success pull-left" id="addQuestionBtn">Kaydet</button>
+                                    <button type="button" class="btn btn-info pull-left" id="addQuestionBtn">Kaydet
+                                    </button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -138,12 +161,30 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-success">
+                            <div class="card-header card-header-warning">
                                 <h4 class="card-title">Konu Çalışma Süresi Gir</h4>
                                 <p class="card-category">Çalıştığın konuya ne kadar zaman harcadın?</p>
                             </div>
                             <div class="card-body">
                                 <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Gün / Ay / Yıl</label>
+                                                <input type="date" class="form-control" id="dateKonu">
+                                                <script>
+
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Saat / Dakika / Saniye</label>
+                                                <input type="time" class="form-control" id="timeKonu">
+                                                <a id="millisecondKonu" hidden></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
@@ -172,7 +213,9 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-success pull-left" id="addLessonDuration">Kaydet</button>
+                                    <button type="button" class="btn btn-warning pull-left" id="addLessonDuration">
+                                        Kaydet
+                                    </button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

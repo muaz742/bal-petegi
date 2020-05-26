@@ -1,3 +1,6 @@
+anlikZamaniSoruGirKismindaGoster();
+anlikZamaniKonuCalismaSuresiGirKismindaGoster();
+
 $(document).ready(function () {
 
     var config = {
@@ -30,34 +33,45 @@ $(document).ready(function () {
             })
 
             $("#addQuestionBtn").click(function () {
-                var lesson = $('#lesson').val()
-                var questionCount = $('#questionCount').val()
+                var lesson = $('#lesson').val();
+                var questionCount = $('#questionCount').val();
+                var date = $('#dateSoru').val();
+                var time = $('#timeSoru').val();
+                var millisecond = document.getElementById('millisecondSoru').text;
+                date = new Date(date+' '+time).getTime();
+                date = date + Number(millisecond);
                 alert("Soru Kaydı Eklendi 👍")
                 firebase.database().ref().child("users").child(current_user).child("records").push(
                     {
                         lesson : lesson,
                         count   : questionCount,
-                        time: Date.now()
+                        time: date
                     }
                 );
 
                 $("#questionCount").val('');
-
+                anlikZamaniSoruGirKismindaGoster();
             });
 
             $("#addLessonDuration").click(function () {
                 var subject = $('#subject').val()
                 var lessonDuration = $('#lessonDuration').val()
+                var date = $('#dateKonu').val();
+                var time = $('#timeKonu').val();
+                var millisecond = document.getElementById('millisecondKonu').text;
+                date = new Date(date+' '+time).getTime();
+                date = date + Number(millisecond);
                 alert("Çalışma Süresi Eklendi 👍")
                 firebase.database().ref().child("users").child(current_user).child("duration").push(
                     {
                         lesson : subject,
                         count   : lessonDuration,
-                        time: Date.now()
+                        time: date
                     }
                 );
 
                 $("#questionCount").val('');
+                anlikZamaniKonuCalismaSuresiGirKismindaGoster();
 
             });
             
