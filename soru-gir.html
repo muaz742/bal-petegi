@@ -101,7 +101,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header card-header-info">
-                                <h4 class="card-title">Soru Gir</h4>
+                                <h4 class="card-title">Soru Sayısı Gir</h4>
                                 <p class="card-category">Topladığın polenleri buradan kayıt edebilirsin.</p>
                             </div>
                             <div class="card-body">
@@ -111,9 +111,6 @@ The above copyright notice and this permission notice shall be included in all c
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Gün / Ay / Yıl</label>
                                                 <input type="date" class="form-control" id="dateSoru">
-                                                <script>
-
-                                                </script>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
@@ -130,13 +127,15 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="bmd-label-floating">Ders</label>
                                                 <select class="form-control" name="lesson" id="lesson">
                                                     <option value="------">------</option>
-                                                    <option value="Türkçe">Türkçe</option>
                                                     <option value="Matematik">Matematik</option>
+                                                    <option value="Geometri">Geometri</option>
                                                     <option value="Fizik">Fizik</option>
                                                     <option value="Kimya">Kimya</option>
                                                     <option value="Biyoloji">Biyoloji</option>
-                                                    <option value="Coğrafya">Coğrafya</option>
+                                                    <option value="Türkçe">Türkçe</option>
+                                                    <option value="Edebiyat">Edebiyat</option>
                                                     <option value="Tarih">Tarih</option>
+                                                    <option value="Coğrafya">Coğrafya</option>
                                                     <option value="Din Kültürü">Din Kültürü</option>
                                                     <option value="Felsefe">Felsefe</option>
                                                     <option value="İngilizce">Yabancı Dil</option>
@@ -147,8 +146,17 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Soru Sayısı</label>
+                                                <label class="bmd-label-floating">Çözülen Soru Sayısı</label>
                                                 <input type="number" class="form-control" id="questionCount">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Soru Çözme Süresi (dk)</label>
+                                                <input type="number" class="form-control" id="minutesSoru">
                                             </div>
                                         </div>
                                     </div>
@@ -189,15 +197,17 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Ders</label>
-                                                <select class="form-control" name="lesson" id="subject">
+                                                <select class="form-control" name="lesson" id="unitKonu">
                                                     <option value="------">------</option>
-                                                    <option value="Türkçe">Türkçe</option>
                                                     <option value="Matematik">Matematik</option>
+                                                    <option value="Geometri">Geometri</option>
                                                     <option value="Fizik">Fizik</option>
                                                     <option value="Kimya">Kimya</option>
                                                     <option value="Biyoloji">Biyoloji</option>
-                                                    <option value="Coğrafya">Coğrafya</option>
+                                                    <option value="Türkçe">Türkçe</option>
+                                                    <option value="Edebiyat">Edebiyat</option>
                                                     <option value="Tarih">Tarih</option>
+                                                    <option value="Coğrafya">Coğrafya</option>
                                                     <option value="Din Kültürü">Din Kültürü</option>
                                                     <option value="Felsefe">Felsefe</option>
                                                     <option value="İngilizce">Yabancı Dil</option>
@@ -252,7 +262,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
-<script src="assets/js/app/main-v0.1.0.js"></script>
+<script src="assets/js/app/main-v0.1.1.js"></script>
 </body>
 
 </html>
