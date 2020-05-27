@@ -1,5 +1,9 @@
-anlikZamaniSoruGirKismindaGoster();
-anlikZamaniKonuCalismaSuresiGirKismindaGoster();
+try{
+    anlikZamaniSoruGirKismindaGoster();
+    anlikZamaniKonuCalismaSuresiGirKismindaGoster();
+}catch (e) {
+    console.error(e)
+}
 
 $(document).ready(function () {
 
@@ -106,7 +110,11 @@ $(document).ready(function () {
                     $('#name').val(snapshot.val().name)
                     $('#surname').val(snapshot.val().surname)
                     $('#city').val(snapshot.val().city)
-                    $('#grade').val(snapshot.val().grade)
+                    try{
+                        $('#grade').val(snapshot.val().grade)
+                    }catch (e) {
+                        console.error(e);
+                    }
                     $('#birthdate').val(snapshot.val().birthdate)
                 }
 
