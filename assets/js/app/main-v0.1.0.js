@@ -1,7 +1,7 @@
-try{
+try {
     anlikZamaniSoruGirKismindaGoster();
     anlikZamaniKonuCalismaSuresiGirKismindaGoster();
-}catch (e) {
+} catch (e) {
     console.error(e)
 }
 
@@ -17,13 +17,13 @@ $(document).ready(function () {
         appId: "1:51545633996:web:8020e1aa7c77dd69573e69",
         measurementId: "G-N08LMFPGDK"
     };
-    
+
     firebase.initializeApp(config);
 
     var current_user = "";
 
     firebase.auth().onAuthStateChanged(function (user) {
-        if(user){
+        if (user) {
 
             current_user = user.uid;
 
@@ -38,18 +38,20 @@ $(document).ready(function () {
 
             $("#addQuestionBtn").click(function () {
                 var lesson = $('#lesson').val();
+                var unit = $('#unitSoru').val();
                 var questionCount = $('#questionCount').val();
                 var date = $('#dateSoru').val();
                 var time = $('#timeSoru').val();
                 var millisecond = document.getElementById('millisecondSoru').text;
-                date = new Date(date+' '+time).getTime();
+                date = new Date(date + ' ' + time).getTime();
                 date = date + Number(millisecond);
                 alert("Soru Kaydı Eklendi 👍")
                 firebase.database().ref().child("users").child(current_user).child("records").push(
                     {
-                        lesson : lesson,
-                        count   : questionCount,
-                        time: date
+                        lesson: lesson,
+                        count: questionCount,
+                        time: date,
+                        unit: unit
                     }
                 );
 
@@ -63,13 +65,13 @@ $(document).ready(function () {
                 var date = $('#dateKonu').val();
                 var time = $('#timeKonu').val();
                 var millisecond = document.getElementById('millisecondKonu').text;
-                date = new Date(date+' '+time).getTime();
+                date = new Date(date + ' ' + time).getTime();
                 date = date + Number(millisecond);
                 alert("Çalışma Süresi Eklendi 👍")
                 firebase.database().ref().child("users").child(current_user).child("duration").push(
                     {
-                        lesson : subject,
-                        count   : lessonDuration,
+                        lesson: subject,
+                        count: lessonDuration,
                         time: date
                     }
                 );
@@ -78,41 +80,39 @@ $(document).ready(function () {
                 anlikZamaniKonuCalismaSuresiGirKismindaGoster();
 
             });
-            
 
 
             $("#saveProfileBtn").click(function () {
-                    var name = $('#name').val()
-                    var surname = $('#surname').val()
-                    var city = $('#city').val()
-                    var grade = $('#grade').val()
-                    var birthdate = $('#birthdate').val()
+                var name = $('#name').val()
+                var surname = $('#surname').val()
+                var city = $('#city').val()
+                var grade = $('#grade').val()
+                var birthdate = $('#birthdate').val()
 
-                    firebase.database().ref().child("users").child(current_user).update(
-                        {
-                            name : name,
-                            surname   : surname,
-                            city: city,
-                            grade: grade,
-                            birthdate: birthdate
-                        }
-                    );
-                    alert("Bilgiler Güncellendi 👍")
+                firebase.database().ref().child("users").child(current_user).update(
+                    {
+                        name: name,
+                        surname: surname,
+                        city: city,
+                        grade: grade,
+                        birthdate: birthdate
+                    }
+                );
+                alert("Bilgiler Güncellendi 👍")
             });
-            
 
 
             var userRef = firebase.database().ref().child("users/" + current_user);
 
             userRef.on("value", function (snapshot) {
 
-                if(snapshot.val()){
+                if (snapshot.val()) {
                     $('#name').val(snapshot.val().name)
                     $('#surname').val(snapshot.val().surname)
                     $('#city').val(snapshot.val().city)
-                    try{
+                    try {
                         $('#grade').val(snapshot.val().grade)
-                    }catch (e) {
+                    } catch (e) {
                         console.error(e);
                     }
                     $('#birthdate').val(snapshot.val().birthdate)
@@ -141,8 +141,7 @@ $(document).ready(function () {
             })
 
 
-            }
-        else{
+        } else {
             window.location.href = "giris-yap.html";
         }
     })
