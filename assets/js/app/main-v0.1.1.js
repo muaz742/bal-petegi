@@ -38,8 +38,9 @@ $(document).ready(function () {
 
             $("#addQuestionBtn").click(function () {
                 var lesson = $('#lesson').val();
-                var unit = $('#unitSoru').val();
+                // var unit = $('#unitSoru').val();
                 var questionCount = $('#questionCount').val();
+                var minuteSoru = $('#minutesSoru').val();
                 var date = $('#dateSoru').val();
                 var time = $('#timeSoru').val();
                 var millisecond = document.getElementById('millisecondSoru').text;
@@ -50,12 +51,14 @@ $(document).ready(function () {
                     {
                         lesson: lesson,
                         count: questionCount,
-                        time: date,
-                        unit: unit
+                        minutes: minuteSoru,
+                        time: date
+                        // unit: unit
                     }
                 );
 
                 $("#questionCount").val('');
+                $('#minutesSoru').val('');
                 anlikZamaniSoruGirKismindaGoster();
             });
 
