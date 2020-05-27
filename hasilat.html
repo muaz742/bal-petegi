@@ -93,6 +93,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         <div class="content">
             <div class="container-fluid">
+                <!-- soru grafikleri -->
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-chart">
@@ -101,6 +102,7 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Günlük Hasılat</h4>
+                                <a id="today"></a>
                                 <p class="card-category">Bugün hangi dersten kaç soru çözdüğünü gösterir.</p>
                             </div>
                             <div class="card-footer">
@@ -116,8 +118,8 @@ The above copyright notice and this permission notice shall be included in all c
                                 <canvas id="haftalikDers" width="400" height="400"></canvas>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Haftalık Hasılat</h4>
-                                <p class="card-category">Bu hafta hangi dersten kaç soru çözdüğünü gösterir.</p>
+                                <h4 class="card-title">Son 7 Günlük Hasılat</h4>
+                                <p class="card-category">Son 7 günde hangi dersten kaç soru çözdüğünü gösterir.</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -143,6 +145,8 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
                 </div>
+
+                <!-- süre grafikleri -->
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-chart">
@@ -193,16 +197,70 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
                 </div>
+
+                <!-- soru-süre grafikleri -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <canvas id="gunlukSoruSure" width="400" height="400"></canvas>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Günlük Hasılat</h4>
+                                <p class="card-category">Bugün hangi derse kaç dakika çalıştığını gösterir.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">access_time</i> Arılar duramaz!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <canvas id="haftalikSoruSure" width="400" height="400"></canvas>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Haftalık Hasılat</h4>
+                                <p class="card-category">Bu hafta hangi derse kaç dakika çalıştığını gösterir.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">access_time</i> Sen Arısın vızır düşün.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <canvas id="toplamSoruSure" width="400" height="400"></canvas>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Çalışma Geçmişi</h4>
+                                <p class="card-category">Günlük toplam kaç dakika ders çalıştığını gösterir.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">access_time</i> Zor sorular sana vız gelir.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- listeler -->
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-warning">
+                            <div class="card-header card-header-info">
                                 <h4 class="card-title">Eklenen Sorular</h4>
                                 <p class="card-category">Eklediğin Soruların Burada Görünür</p>
                             </div>
                             <div class="card-body table-responsive">
                                 <table class="table table-hover text-right">
-                                    <thead class="text-warning">
+                                    <thead class="text-info">
                                     <th>Tarih</th>
                                     <th>Ders</th>
                                     <th>Soru Sayısı</th>
@@ -217,7 +275,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="card">
-                            <div class="card-header card-header-info">
+                            <div class="card-header card-header-warning">
                                 <h4 class="card-title">Eklenen Süreler</h4>
                                 <p class="card-category">Eklediğin Çalışma Sürelerin Burada Görünür</p>
                             </div>
@@ -262,7 +320,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
-<script src="assets/js/app/hasilat.js"></script>
+<script src="assets/js/app/hasilat.v0.1.0.js"></script>
 
 <!--   Core JS Files   -->
 <script src="assets/js/core/popper.min.js"></script>
@@ -486,6 +544,7 @@ The above copyright notice and this permission notice shall be included in all c
 </script>
 <!-- chart js kütüphanesi yükle -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+
 </body>
 
 </html>

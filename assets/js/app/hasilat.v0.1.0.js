@@ -229,6 +229,7 @@ $(document).ready(function () {
                     }
                 }
 
+                // çözülen soru kayıtlarını listele
                 $('#sorular').text(" ");
                 for (var key in listeGirilenSorular) {
                     $('#sorular').append("<tr>\n" +
@@ -242,6 +243,7 @@ $(document).ready(function () {
                         "</tr>");
                 }
 
+                // çalışma süresi kayıtlarını listele
                 $('#sureler').text(" ");
                 for (var key in listeGirilenSureler) {
                     $('#sureler').append("<tr>\n" +
@@ -255,7 +257,7 @@ $(document).ready(function () {
                         "</tr>");
                 }
 
-                // toplanan günlük verileri derse göre grafiğe yazdır
+                // toplanan günlük verileri derse göre bar grafiğe yazdır
                 var gunlukDersler = [];
                 var gunlukSorular = [];
                 for (var key in sonucGunluk) {
@@ -266,7 +268,7 @@ $(document).ready(function () {
                 }
                 gunlukGrafikDersli(gunlukDersler, gunlukSorular);
 
-                // toplanan haftalık verileri derse göre grafiğe yazdır
+                // toplanan haftalık verileri derse göre bar grafiğe yazdır
                 var haftalikDersler = [];
                 var haftalikSorular = [];
                 for (var key in sonucHaftalik) {
@@ -277,7 +279,7 @@ $(document).ready(function () {
                 }
                 haftalikGrafik(haftalikDersler, haftalikSorular);
 
-                // toplanan günlük verileri tarihe göre grafiğe yazdır
+                // toplanan günlük verileri tarihe göre çizgi grafiğe yazdır
                 var tarihler = [];
                 var soruSayilari = [];
                 for (var key in sonuc) {
@@ -289,7 +291,7 @@ $(document).ready(function () {
                 }
                 gunlukGrafik(tarihler, soruSayilari);
 
-                // toplanan günlük çalışma sürelerini derse göre grafiğe yazdır
+                // toplanan günlük çalışma sürelerini derse göre bar grafiğe yazdır
                 var gunlukDerslerKonu = [];
                 var gunlukSurelerKonu = [];
                 for (key in sonucGunlukSureDersli){
@@ -300,7 +302,7 @@ $(document).ready(function () {
                 }
                 gunlukSureGrafikDersli(gunlukDerslerKonu,gunlukSurelerKonu);
 
-                // toplanan haftalık çalışma sürelerini derse göre grafiğe yazdır
+                // toplanan haftalık çalışma sürelerini derse göre bar grafiğe yazdır
                 var haftalikDerslerKonu = [];
                 var haftalikSorularKonu = [];
                 for (var key in sonucHaftalikDersli) {
@@ -323,8 +325,20 @@ $(document).ready(function () {
                 }
                 gunlukSureGrafik(tarihlerKonu, soruSayilariKonu);
 
-            });
+                // TEMP örnek veriler
+                var dersler = ['Matematik', 'Fizik', 'Kimya', 'İngilizce','Biyoloji'];
+                var sureler = [9,4,5,2,7];
+                var sorular = [3,7,3,8,5];
 
+
+                var derslerGunlukSoruSure =[];
+                var sorularGunlukSoruSure = [];
+                var surelerGunlukSoruSure = [];
+
+                guncelleGunlukSoruSure(dersler,sorular, sureler);
+                guncelleHaftalikSoruSure(dersler,sorular,sureler);
+                guncelleToplamSoruSure(dersler,sorular,sureler);
+            });
         } else {
             // giriş yapılmamış ise giriş ekranına yönlendir
             window.location.href = "giris-yap.html";
@@ -424,7 +438,7 @@ function haftalikGrafik(dersler, soruSayilari) {
         data: {
             labels: dersler,
             datasets: [{
-                label: 'Haftalık Çözülen Soru',
+                label: 'Son 7 Günde Çözülen Soru',
                 data: soruSayilari,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -616,6 +630,239 @@ function gunlukSureGrafikDersli(dersler, sureler) {
                         beginAtZero: true
                     }
                 }]
+            }
+        }
+    });
+}
+
+/* her derse ait soru ve çalışma süresini günlük bar grafikte gösterir */
+function guncelleGunlukSoruSure(dersler, sorular, sureler) {
+    var ctx = document.getElementById('gunlukSoruSure').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data:{
+            labels: dersler,
+            datasets: [{
+                label: 'Konu Çalışma Süresi',
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor:[
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)'
+
+                ],
+                borderWidth: 1,
+                data: sureler
+            },{
+                label: 'Soru Çözme Süresi',
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor:[
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1,
+                data: sorular
+            }]
+
+        },
+        options: {
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+}
+
+/* her derse ait soru ve çalışma süresini haftalık bar grafikte gösterir */
+function guncelleHaftalikSoruSure(dersler, sorular, sureler) {
+    var ctx = document.getElementById('haftalikSoruSure').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data:{
+            labels: dersler,
+            datasets: [{
+                label: 'Konu Çalışma Süresi',
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor:[
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)'
+
+                ],
+                borderWidth: 1,
+                data: sureler
+            },{
+                label: 'Soru Çözme Süresi',
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor:[
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1,
+                data: sorular
+            }]
+
+        },
+        options: {
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+}
+
+/* her tarihe ait soru ve çalışma süresini çizgi grafikte gösterir */
+function guncelleToplamSoruSure(dersler, sorular, sureler) {
+    var ctx = document.getElementById('toplamSoruSure').getContext('2d');
+    var myLine = new Chart.Line(ctx, {
+        data: {
+            labels: dersler,
+            datasets: [{
+                label: 'Konu Çalışma Süresi',
+                borderColor: [
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth:1,
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                fill: true,
+                data: sureler,
+                yAxisID: 'y-axis-1',
+            }, {
+                label: 'Soru Çözme Süresi',
+                borderColor: [
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                fill: true,
+                data: sorular,
+                yAxisID: 'y-axis-2'
+            }]
+        },
+        options: {
+            responsive: true,
+            hoverMode: 'index',
+            stacked: false,
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',ticks: {
+                        beginAtZero: true
+                    }
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    ticks: {
+                        beginAtZero: true
+                    },
+
+                    // grid line settings
+                    gridLines: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                }],
             }
         }
     });
