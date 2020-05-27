@@ -471,6 +471,11 @@ function haftalikGrafik(dersler, soruSayilari) {
     });
 }
 
+var d = new Date().getTime();
+document.getElementById('todaySoru').innerText = epochToDate(d);
+document.getElementById('todayKonu').innerText = epochToDate(d);
+
+
 /* her derse ait soru sayısını bar grafikte gösterir */
 function gunlukGrafikDersli(dersler, soruSayilari) {
     var ctx = document.getElementById('gunlukDers').getContext('2d');
@@ -479,7 +484,7 @@ function gunlukGrafikDersli(dersler, soruSayilari) {
         data: {
             labels: dersler,
             datasets: [{
-                label: 'Bugünlük Çözülen Soru',
+                label: 'Bugün Çözülen Soru',
                 data: soruSayilari,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -602,7 +607,7 @@ function gunlukSureGrafikDersli(dersler, sureler) {
         data: {
             labels: dersler,
             datasets: [{
-                label: 'Bugünlük Çalışılan Süre',
+                label: 'Bugün Çalışılan Süre',
                 data: sureler,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
