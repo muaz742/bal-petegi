@@ -63,14 +63,13 @@ $(document).ready(function () {
             });
 
             $("#addLessonDuration").click(function () {
-                var subject = $('#subject').val()
+                var subject = $('#unitKonu').val()
                 var lessonDuration = $('#lessonDuration').val()
                 var date = $('#dateKonu').val();
                 var time = $('#timeKonu').val();
                 var millisecond = document.getElementById('millisecondKonu').text;
                 date = new Date(date + ' ' + time).getTime();
                 date = date + Number(millisecond);
-                alert("Çalışma Süresi Eklendi 👍")
                 firebase.database().ref().child("users").child(current_user).child("duration").push(
                     {
                         lesson: subject,
@@ -78,6 +77,8 @@ $(document).ready(function () {
                         time: date
                     }
                 );
+
+                alert("Çalışma Süresi Eklendi 👍")
 
                 $("#questionCount").val('');
                 anlikZamaniKonuCalismaSuresiGirKismindaGoster();

@@ -279,6 +279,19 @@ $(document).ready(function () {
                 }
                 haftalikGrafik(haftalikDersler, haftalikSorular);
 
+                // son bir haftayı tanımla
+                var sonBirHafta =[];
+                var i = 0;
+                var gun = new Date();
+                gun.setDate(gun.getDate()+1);
+                while (i<7){
+                    gun.setDate(gun.getDate()-1);
+                    var result = epochToDate(gun);
+                    console.log(result);
+                    sonBirHafta.push(result);
+                    i++;
+                }
+
                 // toplanan günlük verileri tarihe göre çizgi grafiğe yazdır
                 var tarihler = [];
                 var soruSayilari = [];
@@ -327,6 +340,7 @@ $(document).ready(function () {
 
                 // TEMP örnek veriler
                 var dersler = ['Matematik', 'Fizik', 'Kimya', 'İngilizce','Biyoloji'];
+                var tarihler = ['25.5.2020', '26.5.2020','27.5.2020'];
                 var sureler = [9,4,5,2,7];
                 var sorular = [3,7,3,8,5];
 
@@ -337,7 +351,7 @@ $(document).ready(function () {
 
                 guncelleGunlukSoruSure(dersler,sorular, sureler);
                 guncelleHaftalikSoruSure(dersler,sorular,sureler);
-                guncelleToplamSoruSure(dersler,sorular,sureler);
+                guncelleToplamSoruSure(tarihler,sorular,sureler);
             });
         } else {
             // giriş yapılmamış ise giriş ekranına yönlendir
@@ -397,7 +411,7 @@ function gunlukGrafik(tarihler, soruSayilari) {
         data: {
             labels: tarihler,
             datasets: [{
-                label: 'Çözülen Toplam Sorular',
+                label: 'Çözülen Toplam Soru',
                 data: soruSayilari,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
