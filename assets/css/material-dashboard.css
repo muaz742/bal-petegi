@@ -15409,6 +15409,19 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   display: block;
 }
 
+.sidebar .logo .simple-text-min {
+  padding: 5px 0px;
+  display: inline-block;
+  font-size: smaller;
+  color: #3C4858;
+  white-space: nowrap;
+  font-weight: 400;
+  line-height: 30px;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+}
+
 .sidebar .logo-tim {
   border-radius: 50%;
   border: 1px solid #333;

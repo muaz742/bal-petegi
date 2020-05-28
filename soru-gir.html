@@ -44,10 +44,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
 
-    <!--    Select2 Kütüphanesi -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
     <!-- Yüklenme Öncesi İşlemler -->
     <script src="assets/js/app/sorugir-before.js"></script>
 
@@ -57,19 +53,33 @@
 <div class="wrapper ">
 
     <!-- Sidebar -->
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
+            <div class="card-profile">
+                <div class="card-avatar">
+                    <a>
+                        <img class="img" src="assets/img/ari-2.png">
+                    </a>
+                </div>
+            </div>
             <a class="simple-text logo-normal">
                 Arı Kovanı
             </a>
+            <i class="simple-text" style="font-size: smaller">Dr. Polaton</i>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="material-icons">sentiment_satisfied</i>
+                        <p>Merhaba Arı</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="hasilat.html">
                         <i class="material-icons">dashboard</i>
@@ -80,6 +90,12 @@
                     <a class="nav-link" href="soru-gir.html">
                         <i class="material-icons">alarm_add</i>
                         <p>Soru Gir</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="material-icons">account_circle</i>
+                        <p>Profil</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -100,6 +116,7 @@
             <div class="container-fluid">
                 <div class="navbar-wrapper">
                     <a class="navbar-brand">Soru Gir</a>
+                    <i id="ekranAtif"></i>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -165,12 +182,12 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Konu</label>
-                                                <select class="form-control js-example-basic-single" name="lesson"
-                                                        id="unit">
-                                                    <option value="------">------</option>
-                                                    <option value="0">Konu 0</option>
+                                                <select class="form-control js-example-basic-single" name="unit"
+                                                        id="unit" disabled>
+                                                    <option value="0">Çok yakında 😊</option>
                                                     <option value="1">Konu 1</option>
                                                     <option value="2">Konu 2</option>
+                                                    <option value="3">Konu 3</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -229,7 +246,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Ders</label>
-                                                <select class="form-control" name="lesson" id="unitKonu">
+                                                <select class="form-control" name="lesson" id="lessonKonu">
                                                     <option value="------">------</option>
                                                     <option value="Matematik">Matematik</option>
                                                     <option value="Geometri">Geometri</option>
@@ -247,10 +264,25 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Toplam Kaç Dakika Harcadın?</label>
+                                                <label class="bmd-label-floating">Konu</label>
+                                                <select class="form-control js-example-basic-single" name="unit"
+                                                        id="unitKonu" disabled>
+                                                    <option value="0">Çok yakında 😊</option>
+                                                    <option value="1">Konu 1</option>
+                                                    <option value="2">Konu 2</option>
+                                                    <option value="3">Konu 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Toplam Kaç Dakika Konu Çalıştın</label>
                                                 <input type="number" class="form-control" id="lessonDuration">
                                             </div>
                                         </div>
@@ -280,7 +312,6 @@
                     <a href="https://www.youtube.com/channel/UCRk3mqXxyaC-ERzRCl7__RA" target="_blank">Dr. Polaton</a>
                     for You.
                 </div>
-                <!-- your footer here -->
             </div>
         </footer>
         <!-- End Footer -->
@@ -288,15 +319,13 @@
     </div>
 </div>
 
-<!-- Diğer JS Kütüphaneleri -->
+<!-- Çekirdek JS Kütüphaneleri -->
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-
-<script src="assets/js/app/main-v0.1.1.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <!-- Yüklenme Sonrası İşlemler -->
 <script src="assets/js/app/sorugir-after.js"></script>

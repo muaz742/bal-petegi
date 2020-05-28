@@ -41,16 +41,10 @@
 
     <!-- jQquery ve Firebase Kütüphaneleri -->
     <script src="assets/js/core/jquery.min.js"></script>
-    <!--
-    <script src="https://www.gstatic.com/firebase/7.14.5/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
-  -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
 
     <!-- Yüklenme Öncesi İşlemler -->
-    <script src="assets/js/app/main-v0.1.1.js"></script>
     <script src="assets/js/app/index-before.js"></script>
 
 </head>
@@ -59,19 +53,33 @@
 <div class="wrapper ">
 
     <!-- Sidebar -->
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
+            <div class="card-profile">
+                <div class="card-avatar">
+                    <a>
+                        <img class="img" src="assets/img/ari-2.png">
+                    </a>
+                </div>
+            </div>
             <a class="simple-text logo-normal">
                 Arı Kovanı
             </a>
+            <i class="simple-text-min">Dr. Polaton</i>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="material-icons">sentiment_very_satisfied</i>
+                        <p>Merhaba Arı</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="hasilat.html">
                         <i class="material-icons">dashboard</i>
@@ -82,6 +90,12 @@
                     <a class="nav-link" href="soru-gir.html">
                         <i class="material-icons">alarm_add</i>
                         <p>Soru Gir</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="material-icons">account_circle</i>
+                        <p>Profil</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -101,7 +115,8 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand">Profil</a>
+                    <a class="navbar-brand">Vızzzz 🐝</a>
+                    <i id="ekranAtif"></i>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -118,72 +133,64 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">Profil Bilgileri</h4>
-                                <p class="card-category">Profil bilgilerini buradan güncelleyebilirsin</p>
+
+                    <!-- Hasılat Ekranına Git -->
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a>
+                                    <img class="img" src="assets/img/organic.svg">
+                                </a>
                             </div>
                             <div class="card-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">İsim</label>
-                                                <input type="text" class="form-control" id="name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Soyisim</label>
-                                                <input type="text" class="form-control" id='surname'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Şehir</label>
-                                                <input type="text" class="form-control" id='city'>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Sınıf</label>
-                                                <select class="form-control" name="lesson" id="grade">
-                                                    <option value="0">------</option>
-                                                    <option value="5">5.Sınıf</option>
-                                                    <option value="6">6.Sınıf</option>
-                                                    <option value="7">7.Sınıf</option>
-                                                    <option value="8">8.Sınıf</option>
-                                                    <option value="9">9.Sınıf</option>
-                                                    <option value="10">10.Sınıf</option>
-                                                    <option value="11">11.Sınıf</option>
-                                                    <option value="12">12.Sınıf</option>
-                                                    <option value="LiseMezun">Lise Mezunu</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Doğum Tarihi</label>
-                                                <input type="date" class="form-control" id="birthdate">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="hasilat.html" type="button" class="btn btn-warning pull-right">
-                                        Devam Et
-                                    </a>
-                                    <button type="button" class="btn btn-primary pull-right" id="saveProfileBtn">
-                                        Bilgileri Güncelle
-                                    </button>
-                                    <div class="clearfix"></div>
-                                </form>
+                                <h6 class="card-category text-gray">görüntüle</h6>
+                                <h4 class="card-title">Bal Hasılatı</h4>
+                                <p class="card-description">
+                                    Buradan Bal Hasılatını Görebilirsin
+                                </p>
+                                <a href="hasilat.html" class="btn btn-primary btn-round">Hasılat Görüntüle</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Soru Ekle -->
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a>
+                                    <img class="img" src="assets/img/ariliPetek.svg">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-category text-gray">ekle</h6>
+                                <h4 class="card-title">Soru Gir</h4>
+                                <p class="card-description">
+                                    Buradan Hasılatına Soru Girebilirsin
+                                </p>
+                                <a href="soru-gir.html" class="btn btn-primary btn-round">Soru Gir</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profili Görüntüle -->
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a>
+                                    <img class="img" src="assets/img/bee.svg">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-category text-gray">güncelle</h6>
+                                <h4 class="card-title">Profil Ekranı</h4>
+                                <p class="card-description">
+                                    Buradan Profil Bilgilerini Görüntüleyebilir ve Güncelleyebilirsin
+                                </p>
+                                <a href="profil.html" class="btn btn-primary btn-round">Profile Git</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -201,7 +208,6 @@
                     <a href="https://www.youtube.com/channel/UCRk3mqXxyaC-ERzRCl7__RA" target="_blank">Dr. Polaton</a>
                     for You.
                 </div>
-                <!-- your footer here -->
             </div>
         </footer>
         <!-- End Footer -->
@@ -209,12 +215,10 @@
     </div>
 </div>
 
-<!-- Diğer JS Kütüphaneleri -->
+<!-- Çekirdek JS Kütüphaneleri -->
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 
 <!-- Yüklenme Sonrası İşlemler -->
