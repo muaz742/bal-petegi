@@ -1,37 +1,50 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
-
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 
 <head>
-    <meta charset="utf-8"/>
+
+    <!-- Gerekli Meta Verileri -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <!-- Birincil Meta Etiketleri -->
+    <title>Soru Gir - Bal Peteği</title>
+    <meta name="title" content="Soru Gir - Bal Peteği">
+    <meta name="description" content="Dr. Polaton ile Arıların Polenlerini Topladığı Arı Kovanı">
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/organic.svg">
     <link rel="shortcut icon" href="assets/img/organic.svg" type="image/x-icon">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>
-        Soru Gir - Bal Peteği
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
-    <!--     Fonts and icons     -->
+
+    <!-- Open Graph / Facebook Önizleme Etiketleri -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://petek.muaz712.com/">
+    <meta property="og:title" content="Soru Gir - Bal Peteği">
+    <meta property="og:description" content="Dr. Polaton ile Arıların Polenlerini Topladığı Arı Kovanı">
+    <meta property="og:image"
+          content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+
+    <!-- Twitter Önizleme Etiketleri -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://petek.muaz712.com/">
+    <meta property="twitter:title" content="Soru Gir - Bal Peteği">
+    <meta property="twitter:description" content="Dr. Polaton ile Arıların Polenlerini Topladığı Arı Kovanı">
+    <meta property="twitter:image"
+          content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+
+    <!-- Yazı Tipleri ve Simgeler -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="assets/demo/demo.css" rel="stylesheet"/>
 
-    <!-- Kütüphaneleri Tanımla  -->
+    <!-- Material Kit CSS -->
+    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
+
+    <!-- jQquery ve Firebase Kütüphaneleri -->
     <script src="assets/js/core/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+
+    <!--    Select2 Kütüphanesi -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
@@ -40,11 +53,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 </head>
 
-<body class="">
-
+<body>
 <div class="wrapper ">
 
-
+    <!-- Sidebar -->
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -79,7 +91,7 @@ The above copyright notice and this permission notice shall be included in all c
             </ul>
         </div>
     </div>
-
+    <!-- End Sidebar -->
 
     <div class="main-panel">
 
@@ -100,6 +112,7 @@ The above copyright notice and this permission notice shall be included in all c
         </nav>
         <!-- End Navbar -->
 
+        <!-- Content -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -253,7 +266,9 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
+        <!-- End Content -->
 
+        <!-- Footer -->
         <footer class="footer">
             <div class="container-fluid">
                 <div class="copyright float-right">
@@ -265,12 +280,15 @@ The above copyright notice and this permission notice shall be included in all c
                     <a href="https://www.youtube.com/channel/UCRk3mqXxyaC-ERzRCl7__RA" target="_blank">Dr. Polaton</a>
                     for You.
                 </div>
+                <!-- your footer here -->
             </div>
         </footer>
+        <!-- End Footer -->
+
     </div>
 </div>
 
-<!--   Core JS Files   -->
+<!-- Diğer JS Kütüphaneleri -->
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -278,10 +296,7 @@ The above copyright notice and this permission notice shall be included in all c
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
 <script src="assets/js/app/main-v0.1.1.js"></script>
-
 
 <!-- Yüklenme Sonrası İşlemler -->
 <script src="assets/js/app/sorugir-after.js"></script>
