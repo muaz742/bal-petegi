@@ -50,7 +50,6 @@ function anlikZamaniSoruGirKismindaGoster() {
     document.getElementById('millisecondSoru').innerText = millisecond;
 }
 
-
 function anlikZamaniKonuCalismaSuresiGirKismindaGoster() {
     // anlık zaman değeri oluştur
     var d = new Date();
@@ -98,3 +97,4 @@ function anlikZamaniKonuCalismaSuresiGirKismindaGoster() {
     // milisaniyeyi gizli elemente tanımla
     document.getElementById('millisecondKonu').innerText = millisecond;
 }
+

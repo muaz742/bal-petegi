@@ -30,6 +30,11 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/demo/demo.css" rel="stylesheet"/>
 
+    <!-- Kütüphaneleri Tanımla  -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
     <!-- Yüklenme Öncesi İşlemler -->
     <script src="assets/js/app/sorugir-before.js"></script>
 
@@ -146,6 +151,20 @@ The above copyright notice and this permission notice shall be included in all c
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
+                                                <label class="bmd-label-floating">Konu</label>
+                                                <select class="form-control js-example-basic-single" name="lesson"
+                                                        id="unit">
+                                                    <option value="------">------</option>
+                                                    <option value="0">Konu 0</option>
+                                                    <option value="1">Konu 1</option>
+                                                    <option value="2">Konu 2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
                                                 <label class="bmd-label-floating">Bu Dersten Kaç Soru Çözdün?</label>
                                                 <input type="number" class="form-control" id="questionCount">
                                             </div>
@@ -252,7 +271,6 @@ The above copyright notice and this permission notice shall be included in all c
 </div>
 
 <!--   Core JS Files   -->
-<script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
