@@ -369,7 +369,8 @@ function gunlukGrafik(tarihler, soruSayilari) {
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(40, 160, 58, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -377,7 +378,8 @@ function gunlukGrafik(tarihler, soruSayilari) {
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgb(40, 160, 58, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -410,7 +412,8 @@ function haftalikGrafik(dersler, soruSayilari) {
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(64, 255, 96, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -418,7 +421,8 @@ function haftalikGrafik(dersler, soruSayilari) {
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(64, 255, 96, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -451,7 +455,8 @@ function gunlukGrafikDersli(dersler, soruSayilari) {
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(64, 255, 96, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -459,7 +464,8 @@ function gunlukGrafikDersli(dersler, soruSayilari) {
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(64, 255, 96, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -492,7 +498,8 @@ function gunlukSureGrafik(tarihler, sureler) {
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(64, 255, 96, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -500,7 +507,8 @@ function gunlukSureGrafik(tarihler, sureler) {
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(64, 255, 96, 1)'
                 ],
                 borderWidth: 1
             }]
