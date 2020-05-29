@@ -45,7 +45,7 @@
     <script src="assets/js/core/firebasejs/4.8.1/firebase-auth.js"></script>
 
     <!-- Yüklenme Öncesi İşlemler -->
-    <script src="assets/js/app/sorugir.0.2.0.js"></script>
+    <script src="assets/js/app/sorugir.0.3.1.js"></script>
 
 </head>
 
@@ -190,7 +190,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Bu Dersten Kaç Soru Çözdün?</label>
+                                                <label class="bmd-label-floating">Bu Dersten (Konudan) Kaç Soru Çözdün?</label>
                                                 <input type="number" class="form-control" id="questionCount">
                                             </div>
                                         </div>
@@ -283,6 +283,90 @@
 
                                     <!-- bilgileri kaydet butonu -->
                                     <button type="button" class="btn btn-warning pull-left" id="addLessonDuration">
+                                        Kaydet
+                                    </button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deneme Sınavı Gir -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title">Deneme Sınavı Gir</h4>
+                                <p class="card-category">Çözdüğün deneme sınavlarını buradan girebilirsin</p>
+                            </div>
+                            <div class="card-body">
+                                <form>
+
+                                    <!-- zaman bilgisi girişi -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Gün / Ay / Yıl</label>
+                                                <input type="date" class="form-control" id="dateDeneme">
+                                                <script>
+
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Saat / Dakika / Saniye</label>
+                                                <input type="time" class="form-control" id="timeDeneme">
+                                                <a id="millisecondDeneme" hidden></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- deneme tip bilgisi girişi -->
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Bugün hangi deneme sınavına girdin?</label>
+                                                <select class="form-control js-example-basic-single" name="unit"
+                                                        id="tipDeneme">
+                                                    <option value="0">------</option>
+                                                    <option value="1">TYT DENEME SINAVI </option>
+                                                    <option value="2">AYT DENEME SINAVI </option>
+                                                    <option value="3">LGS DENEME SINAVI </option>
+                                                    <option value="4">BRANŞ DENEME SINAVI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- deneme sonuc bilgisi girişi -->
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Doğru</label>
+                                                <input type="number" class="form-control" id="denemeDogru" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Yanlış</label>
+                                                <input type="number" class="form-control" id="denemeYanlis" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Boş</label>
+                                                <input type="number" class="form-control" id="denemeBos" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating" id="denemeNet">Net</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- bilgileri kaydet butonu -->
+                                    <button type="button" class="btn btn-danger pull-left" id="addPilotTest">
                                         Kaydet
                                     </button>
                                     <div class="clearfix"></div>

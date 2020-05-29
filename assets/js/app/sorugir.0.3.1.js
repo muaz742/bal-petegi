@@ -26,7 +26,8 @@ $(document).ready(function () {
 
             $("#addQuestionBtn").click(function () {
                 var lesson = $('#lesson').val();
-                var unit = unit = $('#unit').val();;
+                var unit = unit = $('#unit').val();
+                ;
                 var questionCount = $('#questionCount').val();
                 var minuteSoru = $('#minutesSoru').val();
                 var date = $('#dateSoru').val();
@@ -71,6 +72,34 @@ $(document).ready(function () {
                 $("#questionCount").val('');
                 anlikZamaniKonuCalismaSuresiGirKismindaGoster();
 
+            });
+
+            $('#addPilotTest').click(function () {
+                var sinavTipi = $('#tipDeneme').val()
+                var dogru = $('#denemeDogru').val()
+                var yanlis = $('#denemeYanlis').val()
+                var bos = $('#denemeBos').val();
+                var date = $('#dateDeneme').val();
+                var time = $('#timeDeneme').val();
+                var millisecond = document.getElementById('millisecondDeneme').text;
+                date = new Date(date + ' ' + time).getTime();
+                date = date + Number(millisecond);
+                firebase.database().ref().child("users").child(current_user).child("test").push(
+                    {
+                        type: sinavTipi,
+                        correct: dogru,
+                        mistake: yanlis,
+                        blank: bos,
+                        time: date
+                    }
+                );
+
+                alert("Deneme Sınavı Kaydı Eklendi 👍")
+
+                $("#denemeDogru").val('');
+                $("#denemeYanlis").val('');
+                $("#denemeBos").val('');
+                anlikZamaniDenemeKaydiGirKismindaGoster();
             });
 
             var userRef = firebase.database().ref().child("users/" + current_user);
@@ -165,6 +194,7 @@ $(document).ready(function () {
                             case "Türkçe":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sözcükte Anlam">Sözcükte Anlam</option>\n' +
                                     '<option value="Cümlede Anlam">Cümlede Anlam</option>\n' +
                                     '<option value="Deyimler ve Atasözleri">Deyimler ve Atasözleri</option>\n' +
@@ -185,6 +215,7 @@ $(document).ready(function () {
                             case "Matematik":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Çarpanlar ve Katlar">Çarpanlar ve Katlar</option>\n' +
                                     '<option value="Üslü İfadeler">Üslü İfadeler</option>\n' +
                                     '<option value="Kareköklü İfadeler">Kareköklü İfadeler</option>\n' +
@@ -202,6 +233,7 @@ $(document).ready(function () {
                             case "Fen Bilimleri":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Mevsimler ve İklim">Mevsimler ve İklim</option>\n' +
                                     '<option value="DNA ve Genetik Kod">DNA ve Genetik Kod</option>\n' +
                                     '<option value="Basınç">Basınç</option>\n' +
@@ -214,6 +246,7 @@ $(document).ready(function () {
                             case "İnkılap Tarihi":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Bir Kahraman Doğuyor">Bir Kahraman Doğuyor</option>\n' +
                                     '<option value="Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar">Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar</option>\n' +
                                     '<option value="Milli Bir Destan: Ya İstiklal Ya Ölüm!">Milli Bir Destan: Ya İstiklal Ya Ölüm!</option>\n' +
@@ -226,6 +259,7 @@ $(document).ready(function () {
                             case "Din Kültürü":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Kader İnancı">Kader İnancı</option>\n' +
                                     '<option value="Zekat ve Sadaka">Zekat ve Sadaka</option>\n' +
                                     '<option value="Din ve Hayat">Din ve Hayat</option>\n' +
@@ -236,6 +270,7 @@ $(document).ready(function () {
                             case "Yabancı Dil":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Friendship">Friendship</option>\n' +
                                     '<option value="Teen Life">Teen Life</option>\n' +
                                     '<option value="In The Kitchen">In The Kitchen</option>\n' +
@@ -259,6 +294,7 @@ $(document).ready(function () {
                             case "Matematik":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sayılar">Sayılar</option>\n' +
                                     '<option value="Rasyonel ve Ondalık Sayılar">Rasyonel ve Ondalık Sayılar</option>\n' +
                                     '<option value="Bölme ve Bölünebilme, OBEB, OKEK">Bölme ve Bölünebilme, OBEB, OKEK</option>\n' +
@@ -287,6 +323,7 @@ $(document).ready(function () {
                             case "Geometri":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Geometrik Kavramlar">Geometrik Kavramlar</option>\n' +
                                     '<option value="Açılar">Açılar</option>\n' +
                                     '<option value="Üçgenler">Üçgenler</option>\n' +
@@ -302,6 +339,7 @@ $(document).ready(function () {
                             case "Fizik":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Fizik Bilimi">Fizik Bilimi</option>\n' +
                                     '<option value="Madde ve Özellikleri">Madde ve Özellikleri</option>\n' +
                                     '<option value="Isı ve Sıcaklık">Isı ve Sıcaklık</option>\n' +
@@ -320,6 +358,7 @@ $(document).ready(function () {
                             case "Kimya":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Kimya Bilimi">Kimya Bilimi</option>\n' +
                                     '<option value="Atomun Yapısı">Atomun Yapısı</option>\n' +
                                     '<option value="Periyodik Sistem">Periyodik Sistem</option>\n' +
@@ -343,6 +382,7 @@ $(document).ready(function () {
                             case "Biyoloji":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Biyoloji Bilimi">Biyoloji Bilimi</option>\n' +
                                     '<option value="Canlıların Ortak Özellikleri">Canlıların Ortak Özellikleri</option>\n' +
                                     '<option value="Canlıların Temel Bileşenleri">Canlıların Temel Bileşenleri</option>\n' +
@@ -371,6 +411,7 @@ $(document).ready(function () {
                             case "Türkçe":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sözcük ve Söz Öbeklerinde Anlam">Sözcük ve Söz Öbeklerinde Anlam</option>\n' +
                                     '<option value="Cümlenin Anlamı ve Yorumu">Cümlenin Anlamı ve Yorumu</option>\n' +
                                     '<option value="Anlatım Bilgisi">Anlatım Bilgisi</option>\n' +
@@ -387,6 +428,7 @@ $(document).ready(function () {
                             case "Edebiyat":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Güzel Sanatlar ve Edebiyat">Güzel Sanatlar ve Edebiyat</option>\n' +
                                     '<option value="Coşku ve Heyecan Dile Getiren Metinler (Şiir)">Coşku ve Heyecan Dile Getiren Metinler (Şiir)</option>\n' +
                                     '<option value="Olay Çevresinde Oluşan Edebi Metinler">Olay Çevresinde Oluşan Edebi Metinler</option>\n' +
@@ -407,6 +449,7 @@ $(document).ready(function () {
                             case "Tarih":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Tarih Bilimine Giriş">Tarih Bilimine Giriş</option>\n' +
                                     '<option value="Uygarlığın Doğuşu ve İlk Uygarlıklar">Uygarlığın Doğuşu ve İlk Uygarlıklar</option>\n' +
                                     '<option value="İlk Türk Devletleri">İlk Türk Devletleri</option>\n' +
@@ -436,6 +479,7 @@ $(document).ready(function () {
                             case "Coğrafya":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Doğa ve İnsan">Doğa ve İnsan</option>\n' +
                                     '<option value="Coğrafi Konum">Coğrafi Konum</option>\n' +
                                     '<option value="Dünya’nın Şekli ve Hareketleri">Dünya’nın Şekli ve Hareketleri</option>\n' +
@@ -452,6 +496,7 @@ $(document).ready(function () {
                             case "Felsefe":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Felsefenin Konusu ve Bilgi Türleri">Felsefenin Konusu ve Bilgi Türleri</option>\n' +
                                     '<option value="Bilgi Felsefesi">Bilgi Felsefesi</option>\n' +
                                     '<option value="Varlık Felsefesi">Varlık Felsefesi</option>\n' +
@@ -465,6 +510,7 @@ $(document).ready(function () {
                             case "Din Kültürü":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="İnsan ve Din">İnsan ve Din</option>\n' +
                                     '<option value="Allah İnancı">Allah İnancı</option>\n' +
                                     '<option value="Kur’an-ı Kerim">Kur’an-ı Kerim</option>\n' +
@@ -477,6 +523,7 @@ $(document).ready(function () {
                             case "Psikoloji":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Psikoloji Bilimini Tanıyalım">Psikoloji Bilimini Tanıyalım</option>\n' +
                                     '<option value="Psikolojinin Temel Süreçleri">Psikolojinin Temel Süreçleri</option>\n' +
                                     '<option value="Öğrenme Bellek Düşünme">Öğrenme Bellek Düşünme</option>\n' +
@@ -486,6 +533,7 @@ $(document).ready(function () {
                             case "Sosyoloji":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sosyolojiye Giriş">Sosyolojiye Giriş</option>\n' +
                                     '<option value="Birey ve Toplum">Birey ve Toplum</option>\n' +
                                     '<option value="Toplumsal Yapı">Toplumsal Yapı</option>\n' +
@@ -510,6 +558,7 @@ $(document).ready(function () {
                             case "Türkçe":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sözcükte Anlam">Sözcükte Anlam</option>\n' +
                                     '<option value="Cümlede Anlam">Cümlede Anlam</option>\n' +
                                     '<option value="Deyimler ve Atasözleri">Deyimler ve Atasözleri</option>\n' +
@@ -530,6 +579,7 @@ $(document).ready(function () {
                             case "Matematik":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Çarpanlar ve Katlar">Çarpanlar ve Katlar</option>\n' +
                                     '<option value="Üslü İfadeler">Üslü İfadeler</option>\n' +
                                     '<option value="Kareköklü İfadeler">Kareköklü İfadeler</option>\n' +
@@ -547,6 +597,7 @@ $(document).ready(function () {
                             case "Fen Bilimleri":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Mevsimler ve İklim">Mevsimler ve İklim</option>\n' +
                                     '<option value="DNA ve Genetik Kod">DNA ve Genetik Kod</option>\n' +
                                     '<option value="Basınç">Basınç</option>\n' +
@@ -559,6 +610,7 @@ $(document).ready(function () {
                             case "İnkılap Tarihi":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Bir Kahraman Doğuyor">Bir Kahraman Doğuyor</option>\n' +
                                     '<option value="Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar">Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar</option>\n' +
                                     '<option value="Milli Bir Destan: Ya İstiklal Ya Ölüm!">Milli Bir Destan: Ya İstiklal Ya Ölüm!</option>\n' +
@@ -571,6 +623,7 @@ $(document).ready(function () {
                             case "Din Kültürü":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Kader İnancı">Kader İnancı</option>\n' +
                                     '<option value="Zekat ve Sadaka">Zekat ve Sadaka</option>\n' +
                                     '<option value="Din ve Hayat">Din ve Hayat</option>\n' +
@@ -581,6 +634,7 @@ $(document).ready(function () {
                             case "Yabancı Dil":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Friendship">Friendship</option>\n' +
                                     '<option value="Teen Life">Teen Life</option>\n' +
                                     '<option value="In The Kitchen">In The Kitchen</option>\n' +
@@ -604,6 +658,7 @@ $(document).ready(function () {
                             case "Matematik":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sayılar">Sayılar</option>\n' +
                                     '<option value="Rasyonel ve Ondalık Sayılar">Rasyonel ve Ondalık Sayılar</option>\n' +
                                     '<option value="Bölme ve Bölünebilme, OBEB, OKEK">Bölme ve Bölünebilme, OBEB, OKEK</option>\n' +
@@ -632,6 +687,7 @@ $(document).ready(function () {
                             case "Geometri":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Geometrik Kavramlar">Geometrik Kavramlar</option>\n' +
                                     '<option value="Açılar">Açılar</option>\n' +
                                     '<option value="Üçgenler">Üçgenler</option>\n' +
@@ -647,6 +703,7 @@ $(document).ready(function () {
                             case "Fizik":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Fizik Bilimi">Fizik Bilimi</option>\n' +
                                     '<option value="Madde ve Özellikleri">Madde ve Özellikleri</option>\n' +
                                     '<option value="Isı ve Sıcaklık">Isı ve Sıcaklık</option>\n' +
@@ -665,6 +722,7 @@ $(document).ready(function () {
                             case "Kimya":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Kimya Bilimi">Kimya Bilimi</option>\n' +
                                     '<option value="Atomun Yapısı">Atomun Yapısı</option>\n' +
                                     '<option value="Periyodik Sistem">Periyodik Sistem</option>\n' +
@@ -688,6 +746,7 @@ $(document).ready(function () {
                             case "Biyoloji":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Biyoloji Bilimi">Biyoloji Bilimi</option>\n' +
                                     '<option value="Canlıların Ortak Özellikleri">Canlıların Ortak Özellikleri</option>\n' +
                                     '<option value="Canlıların Temel Bileşenleri">Canlıların Temel Bileşenleri</option>\n' +
@@ -716,6 +775,7 @@ $(document).ready(function () {
                             case "Türkçe":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sözcük ve Söz Öbeklerinde Anlam">Sözcük ve Söz Öbeklerinde Anlam</option>\n' +
                                     '<option value="Cümlenin Anlamı ve Yorumu">Cümlenin Anlamı ve Yorumu</option>\n' +
                                     '<option value="Anlatım Bilgisi">Anlatım Bilgisi</option>\n' +
@@ -732,6 +792,7 @@ $(document).ready(function () {
                             case "Edebiyat":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Güzel Sanatlar ve Edebiyat">Güzel Sanatlar ve Edebiyat</option>\n' +
                                     '<option value="Coşku ve Heyecan Dile Getiren Metinler (Şiir)">Coşku ve Heyecan Dile Getiren Metinler (Şiir)</option>\n' +
                                     '<option value="Olay Çevresinde Oluşan Edebi Metinler">Olay Çevresinde Oluşan Edebi Metinler</option>\n' +
@@ -752,6 +813,7 @@ $(document).ready(function () {
                             case "Tarih":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Tarih Bilimine Giriş">Tarih Bilimine Giriş</option>\n' +
                                     '<option value="Uygarlığın Doğuşu ve İlk Uygarlıklar">Uygarlığın Doğuşu ve İlk Uygarlıklar</option>\n' +
                                     '<option value="İlk Türk Devletleri">İlk Türk Devletleri</option>\n' +
@@ -781,6 +843,7 @@ $(document).ready(function () {
                             case "Coğrafya":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Doğa ve İnsan">Doğa ve İnsan</option>\n' +
                                     '<option value="Coğrafi Konum">Coğrafi Konum</option>\n' +
                                     '<option value="Dünya’nın Şekli ve Hareketleri">Dünya’nın Şekli ve Hareketleri</option>\n' +
@@ -797,6 +860,7 @@ $(document).ready(function () {
                             case "Felsefe":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Felsefenin Konusu ve Bilgi Türleri">Felsefenin Konusu ve Bilgi Türleri</option>\n' +
                                     '<option value="Bilgi Felsefesi">Bilgi Felsefesi</option>\n' +
                                     '<option value="Varlık Felsefesi">Varlık Felsefesi</option>\n' +
@@ -810,6 +874,7 @@ $(document).ready(function () {
                             case "Din Kültürü":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="İnsan ve Din">İnsan ve Din</option>\n' +
                                     '<option value="Allah İnancı">Allah İnancı</option>\n' +
                                     '<option value="Kur’an-ı Kerim">Kur’an-ı Kerim</option>\n' +
@@ -822,6 +887,7 @@ $(document).ready(function () {
                             case "Psikoloji":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Psikoloji Bilimini Tanıyalım">Psikoloji Bilimini Tanıyalım</option>\n' +
                                     '<option value="Psikolojinin Temel Süreçleri">Psikolojinin Temel Süreçleri</option>\n' +
                                     '<option value="Öğrenme Bellek Düşünme">Öğrenme Bellek Düşünme</option>\n' +
@@ -831,6 +897,7 @@ $(document).ready(function () {
                             case "Sosyoloji":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Sosyolojiye Giriş">Sosyolojiye Giriş</option>\n' +
                                     '<option value="Birey ve Toplum">Birey ve Toplum</option>\n' +
                                     '<option value="Toplumsal Yapı">Toplumsal Yapı</option>\n' +
@@ -847,6 +914,12 @@ $(document).ready(function () {
                     }
                 })
 
+                /* güncel net hesaplama kısmı
+                $('#denemeDogru').on('change', function () {
+                    console.log($(this).val())
+                })
+                 */
+
             })
 
             // konular girişini biçimlendir
@@ -859,15 +932,34 @@ $(document).ready(function () {
                 allowClear: true
             });
 
+
         } else {
             // giriş yapılmamış ise 'giriş yap' ekranına yönlendir
             window.location.href = "giris-yap.html";
         }
     })
 
+    // giriş yapıldığında net bilgisini güncelle
+    document.getElementById('denemeDogru').addEventListener("keyup", function (evt) {
+        console.log(this.value);
+        netGuncelle();
+    }, false);
+    document.getElementById('denemeYanlis').addEventListener("keyup", function (evt) {
+        console.log(this.value);
+        netGuncelle();
+    }, false);
+    document.getElementById('denemeBos').addEventListener("keyup", function (evt) {
+        console.log(this.value);
+        netGuncelle();
+    }, false);
+    $('#tipDeneme').on('change', function () {
+        netGuncelle();
+    })
+
     // zaman bilgisini güncelle
     anlikZamaniSoruGirKismindaGoster();
     anlikZamaniKonuCalismaSuresiGirKismindaGoster();
+    anlikZamaniDenemeKaydiGirKismindaGoster();
 })
 
 // oturumu kapat butonuna tıklandığıdna
@@ -983,4 +1075,88 @@ function anlikZamaniKonuCalismaSuresiGirKismindaGoster() {
 
     // milisaniyeyi gizli elemente tanımla
     document.getElementById('millisecondKonu').innerText = millisecond;
+}
+
+function anlikZamaniDenemeKaydiGirKismindaGoster() {
+    // anlık zaman değeri oluştur
+    var d = new Date();
+
+    // tarihi tanımla
+    var month = '' + (d.getMonth() + 1);
+    var day = '' + d.getDate();
+    var year = '' + d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    // tarihi soru gir kısmında görüntüle
+    document.getElementById("dateDeneme").value = [year, month, day].join('-');
+
+    // saati tanımla
+    hours = '' + d.getHours();
+    minutes = '' + d.getMinutes();
+    seconds = '' + d.getSeconds();
+    millisecond = '' + d.getMilliseconds();
+
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    switch (millisecond.length) {
+        case 1:
+            millisecond = '00' + millisecond;
+            break;
+        case 2:
+            millisecond = '0' + millisecond;
+            break;
+    }
+
+    // saati soru gir kısmında görüntüle
+    document.getElementById('timeDeneme').value = [hours, minutes, seconds].join(':');
+
+    // milisaniyeyi gizli elemente tanımla
+    document.getElementById('millisecondDeneme').innerText = millisecond;
+}
+
+// net hesaplama fonksiyonu
+function netHesapla(sinavTipi, dogru, yanlis) {
+    var net;
+    switch (sinavTipi) {
+        case 1: // TYT Sınavı
+            net = dogru - (yanlis / 4);
+            break;
+        case 2: // AYT Sınavı
+            net = dogru - (yanlis / 4);
+            break;
+        case 3: // LGS Sınavı
+            net = dogru - (yanlis / 3);
+            break;
+        case 4: // BRANŞ Sınavı
+            net = dogru - (yanlis / 4);
+            break;
+        default:
+            net = 0;
+    }
+    net = net.toFixed(2);
+    return net;
+}
+
+// deneme sınavı gir kısmı net ifadesi güncelleme fonksiyonu
+function netGuncelle() {
+    var sinavTipi = $('#tipDeneme').val();
+    var dogru = $('#denemeDogru').val();
+    var yanlis = $('#denemeYanlis').val();
+    console.log("tip: " + sinavTipi)
+    console.log("doğru: " + dogru)
+    console.log("yanlış: " + yanlis)
+    var net = netHesapla(Number(sinavTipi), Number(dogru), Number(yanlis));
+    console.log("net: " + net);
+    $('#denemeNet').text("Net: " + net);
 }
