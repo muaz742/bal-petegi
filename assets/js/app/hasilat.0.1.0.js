@@ -37,7 +37,11 @@ $(document).ready(function () {
                 guncelleAtif(snapshot.val().name, snapshot.val().surname)
 
                 var shot = snapshot.val()['records'];
-                var keys = Object.keys(shot);
+                try {
+                    var keys = Object.keys(shot);
+                } catch (e) {
+                    console.warn(e);
+                }
                 var duration = snapshot.val()['duration'];
                 var sonuc = [];
                 var sonucHaftalik = [];
@@ -64,55 +68,60 @@ $(document).ready(function () {
                 geceYarisi = geceYarisi.getTime();
 
                 // soru kayıtlarını işle
-                for (i = 0; i < keys.length; i++) {
+                try {
 
-                    // zaman kaydını al, tarihe dönüştür
-                    var tarih = epochToDate(shot[keys[i]]['time']);
-                    var tarihEpoch = shot[keys[i]]['time'];
-                    var saat = epochToTime(shot[keys[i]]['time']);
+                    for (i = 0; i < keys.length; i++) {
 
-                    // ders kaydını al
-                    var ders = shot[keys[i]]['lesson'];
+                        // zaman kaydını al, tarihe dönüştür
+                        var tarih = epochToDate(shot[keys[i]]['time']);
+                        var tarihEpoch = shot[keys[i]]['time'];
+                        var saat = epochToTime(shot[keys[i]]['time']);
 
-                    // soru miktarını al
-                    var miktar = shot[keys[i]]['count'];
-                    Number(miktar);
+                        // ders kaydını al
+                        var ders = shot[keys[i]]['lesson'];
 
-                    // gün içinde çözülen soru miktarını derslere göre topla
-                    if (shot[keys[i]]['time'] > geceYarisi) {
-                        if (sonucGunluk[ders] == null) {
-                            sonucGunluk[ders] = Number(miktar);
-                        } else {
-                            sonucGunluk[ders] = sonucGunluk[ders] + Number(miktar);
+                        // soru miktarını al
+                        var miktar = shot[keys[i]]['count'];
+                        Number(miktar);
+
+                        // gün içinde çözülen soru miktarını derslere göre topla
+                        if (shot[keys[i]]['time'] > geceYarisi) {
+                            if (sonucGunluk[ders] == null) {
+                                sonucGunluk[ders] = Number(miktar);
+                            } else {
+                                sonucGunluk[ders] = sonucGunluk[ders] + Number(miktar);
+                            }
+                        }
+
+                        // hafta içinde çözülen soru miktarını derslere göre topla
+                        if (shot[keys[i]]['time'] > gecenHafta) {
+                            if (sonucHaftalik[ders] == null) {
+                                sonucHaftalik[ders] = Number(miktar);
+                            } else {
+                                sonucHaftalik[ders] = sonucHaftalik[ders] + Number(miktar);
+                            }
+                        }
+
+                        // toplam çözülen soru miktarını günlere göre topla
+                        if (shot[keys[i]]['time'] > gecenHafta) {
+                            if (sonuc[tarih] == null) {
+                                sonuc[tarih] = Number(miktar);
+                            } else {
+                                sonuc[tarih] = sonuc[tarih] + Number(miktar);
+                            }
+                        }
+
+                        // girilen soru kayıtlarını topla
+                        listeGirilenSorular[shot[keys[i]]['time']] = {
+                            "tarih": tarih,
+                            "saat": saat,
+                            "ders": ders,
+                            "miktar": miktar,
+                            "key": keys[i]
                         }
                     }
-
-                    // hafta içinde çözülen soru miktarını derslere göre topla
-                    if (shot[keys[i]]['time'] > gecenHafta) {
-                        if (sonucHaftalik[ders] == null) {
-                            sonucHaftalik[ders] = Number(miktar);
-                        } else {
-                            sonucHaftalik[ders] = sonucHaftalik[ders] + Number(miktar);
-                        }
-                    }
-
-                    // toplam çözülen soru miktarını günlere göre topla
-                    if (shot[keys[i]]['time'] > gecenHafta) {
-                        if (sonuc[tarih] == null) {
-                            sonuc[tarih] = Number(miktar);
-                        } else {
-                            sonuc[tarih] = sonuc[tarih] + Number(miktar);
-                        }
-                    }
-
-                    // girilen soru kayıtlarını topla
-                    listeGirilenSorular[shot[keys[i]]['time']] = {
-                        "tarih": tarih,
-                        "saat": saat,
-                        "ders": ders,
-                        "miktar": miktar,
-                        "key": keys[i]
-                    }
+                } catch (e) {
+                    console.warn(e);
                 }
 
                 // süre kayıtlarını işle

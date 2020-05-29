@@ -41,11 +41,11 @@
 
     <!-- jQquery ve Firebase Kütüphaneleri -->
     <script src="assets/js/core/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+    <script src="assets/js/core/firebasejs/4.8.1/firebase.js"></script>
+    <script src="assets/js/core/firebasejs/4.8.1/firebase-auth.js"></script>
 
     <!-- Yüklenme Öncesi İşlemler -->
-    <script src="assets/js/app/sorugir-before.js"></script>
+    <script src="assets/js/app/sorugir.0.1.0.js"></script>
 
 </head>
 
@@ -133,6 +133,8 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+
+                    <!-- Soru Sayısı Gir -->
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header card-header-info">
@@ -141,6 +143,8 @@
                             </div>
                             <div class="card-body">
                                 <form>
+
+                                    <!-- zaman bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -156,42 +160,33 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- ders bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Ders</label>
-                                                <select class="form-control" name="lesson" id="lesson">
+                                                <select class="form-control" name="lesson" id="lesson" disabled>
                                                     <option value="------">------</option>
-                                                    <option value="Matematik">Matematik</option>
-                                                    <option value="Geometri">Geometri</option>
-                                                    <option value="Fizik">Fizik</option>
-                                                    <option value="Kimya">Kimya</option>
-                                                    <option value="Biyoloji">Biyoloji</option>
-                                                    <option value="Türkçe">Türkçe</option>
-                                                    <option value="Edebiyat">Edebiyat</option>
-                                                    <option value="Tarih">Tarih</option>
-                                                    <option value="Coğrafya">Coğrafya</option>
-                                                    <option value="Din Kültürü">Din Kültürü</option>
-                                                    <option value="Felsefe">Felsefe</option>
-                                                    <option value="İngilizce">Yabancı Dil</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- konu bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Konu</label>
                                                 <select class="form-control js-example-basic-single" name="unit"
                                                         id="unit" disabled>
-                                                    <option value="0">Çok yakında 😊</option>
-                                                    <option value="1">Konu 1</option>
-                                                    <option value="2">Konu 2</option>
-                                                    <option value="3">Konu 3</option>
+                                                    <option value="------">Ders Seçiniz</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- soru sayısı bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
@@ -201,6 +196,7 @@
                                         </div>
                                     </div>
 
+                                    <!-- soru çözme süresi bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
@@ -209,6 +205,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- bilgileri kaydet butonu -->
                                     <button type="button" class="btn btn-info pull-left" id="addQuestionBtn">Kaydet
                                     </button>
                                     <div class="clearfix"></div>
@@ -216,6 +214,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Konu Çalışma Süresi Gir -->
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header card-header-warning">
@@ -224,6 +224,8 @@
                             </div>
                             <div class="card-body">
                                 <form>
+
+                                    <!-- zaman bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -242,51 +244,44 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- ders bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Ders</label>
-                                                <select class="form-control" name="lesson" id="lessonKonu">
+                                                <select class="form-control" name="lesson" id="lessonKonu" disabled>
                                                     <option value="------">------</option>
-                                                    <option value="Matematik">Matematik</option>
-                                                    <option value="Geometri">Geometri</option>
-                                                    <option value="Fizik">Fizik</option>
-                                                    <option value="Kimya">Kimya</option>
-                                                    <option value="Biyoloji">Biyoloji</option>
-                                                    <option value="Türkçe">Türkçe</option>
-                                                    <option value="Edebiyat">Edebiyat</option>
-                                                    <option value="Tarih">Tarih</option>
-                                                    <option value="Coğrafya">Coğrafya</option>
-                                                    <option value="Din Kültürü">Din Kültürü</option>
-                                                    <option value="Felsefe">Felsefe</option>
-                                                    <option value="İngilizce">Yabancı Dil</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <!-- konu bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Konu</label>
                                                 <select class="form-control js-example-basic-single" name="unit"
                                                         id="unitKonu" disabled>
-                                                    <option value="0">Çok yakında 😊</option>
-                                                    <option value="1">Konu 1</option>
-                                                    <option value="2">Konu 2</option>
-                                                    <option value="3">Konu 3</option>
+                                                    <option value="0">Ders Seçiniz</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- süre bilgisi girişi -->
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Toplam Kaç Dakika Konu Çalıştın</label>
+                                                <label class="bmd-label-floating">Toplam Kaç Dakika Konu
+                                                    Çalıştın</label>
                                                 <input type="number" class="form-control" id="lessonDuration">
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- bilgileri kaydet butonu -->
                                     <button type="button" class="btn btn-warning pull-left" id="addLessonDuration">
                                         Kaydet
                                     </button>
@@ -324,11 +319,8 @@
 <script src="assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
-<!-- Yüklenme Sonrası İşlemler -->
-<script src="assets/js/app/sorugir-after.js"></script>
 
 </body>
 
