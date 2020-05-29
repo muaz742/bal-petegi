@@ -161,8 +161,98 @@ $(document).ready(function () {
                 $('#lesson').on('change', function () {
                     if (grade < 9) {
                         // LGS sınav konuları yükle
-                        $('#unit').text(' ');
-                        $('#unit').append('<option value="------">Çok yakında 😊</option>\n');
+                        switch ($(this).val()) {
+                            case "Türkçe":
+                                $('#unit').text(' ');
+                                $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Sözcükte Anlam">Sözcükte Anlam</option>\n' +
+                                    '<option value="Cümlede Anlam">Cümlede Anlam</option>\n' +
+                                    '<option value="Deyimler ve Atasözleri">Deyimler ve Atasözleri</option>\n' +
+                                    '<option value="Parçada Anlam">Parçada Anlam</option>\n' +
+                                    '<option value="Ses Bilgisi">Ses Bilgisi</option>\n' +
+                                    '<option value="Yazım Kuralları">Yazım Kuralları</option>\n' +
+                                    '<option value="Noktalama İşaretleri">Noktalama İşaretleri</option>\n' +
+                                    '<option value="Fiilimsi">Fiilimsi</option>\n' +
+                                    '<option value="Cümlenin Ögeleri">Cümlenin Ögeleri</option>\n' +
+                                    '<option value="Cümle Vurgusu">Cümle Vurgusu</option>\n' +
+                                    '<option value="Fiillerde Çatı">Fiillerde Çatı</option>\n' +
+                                    '<option value="Cümle Çeşitleri">Cümle Çeşitleri</option>\n' +
+                                    '<option value="Anlatım Bozuklukları">Anlatım Bozuklukları</option>\n' +
+                                    '<option value="Söz Sanatları">Söz Sanatları</option>\n' +
+                                    '<option value="Yazı (Metin) Türleri">Yazı (Metin) Türleri</option>');
+                                $('#unit').removeAttr('disabled');
+                                break;
+                            case "Matematik":
+                                $('#unit').text(' ');
+                                $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Çarpanlar ve Katlar">Çarpanlar ve Katlar</option>\n' +
+                                    '<option value="Üslü İfadeler">Üslü İfadeler</option>\n' +
+                                    '<option value="Kareköklü İfadeler">Kareköklü İfadeler</option>\n' +
+                                    '<option value="Veri Analizi">Veri Analizi</option>\n' +
+                                    '<option value="Basit Olayların Olma Olasılığı">Basit Olayların Olma Olasılığı</option>\n' +
+                                    '<option value="Cebirsel İfadeler ve Özdeşlikler">Cebirsel İfadeler ve Özdeşlikler</option>\n' +
+                                    '<option value="Doğrusal Denklemler">Doğrusal Denklemler</option>\n' +
+                                    '<option value="Eşitsizlikler">Eşitsizlikler</option>\n' +
+                                    '<option value="Üçgenler">Üçgenler</option>\n' +
+                                    '<option value="Eşlik Benzerlik">Eşlik Benzerlik</option>\n' +
+                                    '<option value="Dönüşüm Geometrisi">Dönüşüm Geometrisi</option>\n' +
+                                    '<option value="Geometrik Cisimler">Geometrik Cisimler</option>');
+                                $('#unit').removeAttr('disabled');
+                                break;
+                            case "Fen Bilimleri":
+                                $('#unit').text(' ');
+                                $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Mevsimler ve İklim">Mevsimler ve İklim</option>\n' +
+                                    '<option value="DNA ve Genetik Kod">DNA ve Genetik Kod</option>\n' +
+                                    '<option value="Basınç">Basınç</option>\n' +
+                                    '<option value="Madde ve Endüstri">Madde ve Endüstri</option>\n' +
+                                    '<option value="Basit Makineler">Basit Makineler</option>\n' +
+                                    '<option value="Enerji Dönüşümleri ve Çevre Bilimi">Enerji Dönüşümleri ve Çevre Bilimi</option>\n' +
+                                    '<option value="Elektrik Yükleri ve Elektrik Enerjisi">Elektrik Yükleri ve Elektrik Enerjisi</option>');
+                                $('#unit').removeAttr('disabled');
+                                break;
+                            case "İnkılap Tarihi":
+                                $('#unit').text(' ');
+                                $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Bir Kahraman Doğuyor">Bir Kahraman Doğuyor</option>\n' +
+                                    '<option value="Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar">Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar</option>\n' +
+                                    '<option value="Milli Bir Destan: Ya İstiklal Ya Ölüm!">Milli Bir Destan: Ya İstiklal Ya Ölüm!</option>\n' +
+                                    '<option value="Atatürkçülük ve Çağdağlaşan Türkiye">Atatürkçülük ve Çağdağlaşan Türkiye</option>\n' +
+                                    '<option value="Demokratikleşme Çabaları">Demokratikleşme Çabaları</option>\n' +
+                                    '<option value="Atatürk Dönemi Türk Dış Politikası">Atatürk Dönemi Türk Dış Politikası</option>\n' +
+                                    '<option value="Atatürk\'ün Ölümü ve Sonrası">Atatürk\'ün Ölümü ve Sonrası</option>');
+                                $('#unit').removeAttr('disabled');
+                                break;
+                            case "Din Kültürü":
+                                $('#unit').text(' ');
+                                $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Kader İnancı">Kader İnancı</option>\n' +
+                                    '<option value="Zekat ve Sadaka">Zekat ve Sadaka</option>\n' +
+                                    '<option value="Din ve Hayat">Din ve Hayat</option>\n' +
+                                    '<option value="Hz.Muhammed\'in Örnekliği">Hz.Muhammed\'in Örnekliği</option>\n' +
+                                    '<option value="Kur\'an-ı Kerim ve Özellikleri">Kur\'an-ı Kerim ve Özellikleri</option>');
+                                $('#unit').removeAttr('disabled');
+                                break;
+                            case "Yabancı Dil":
+                                $('#unit').text(' ');
+                                $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Friendship">Friendship</option>\n' +
+                                    '<option value="Teen Life">Teen Life</option>\n' +
+                                    '<option value="In The Kitchen">In The Kitchen</option>\n' +
+                                    '<option value="On The Phone ">On The Phone </option>\n' +
+                                    '<option value="The Internet">The Internet</option>\n' +
+                                    '<option value="Adventures">Adventures</option>\n' +
+                                    '<option value="Tourism">Tourism</option>\n' +
+                                    '<option value="Chores">Chores</option>\n' +
+                                    '<option value="Science">Science</option>\n' +
+                                    '<option value="Natural Forces">Natural Forces</option>');
+                                $('#unit').removeAttr('disabled');
+                                break;
+                            default:
+                                $('#unit').text(' ');
+                                console.warn('Derse seçimine ait konu bulunamadı!')
+                                break;
+                        }
                     } else {
                         // TYT-AYT sınav konuları yükle
                         switch ($(this).val()) {
@@ -416,8 +506,98 @@ $(document).ready(function () {
                 $('#lessonKonu').on('change', function () {
                     if (grade < 9) {
                         // LGS sınav konuları yükle
-                        $('#unitKonu').text(' ');
-                        $('#unitKonu').append('<option value="------">Çok yakında 😊</option>\n');
+                        switch ($(this).val()) {
+                            case "Türkçe":
+                                $('#unitKonu').text(' ');
+                                $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Sözcükte Anlam">Sözcükte Anlam</option>\n' +
+                                    '<option value="Cümlede Anlam">Cümlede Anlam</option>\n' +
+                                    '<option value="Deyimler ve Atasözleri">Deyimler ve Atasözleri</option>\n' +
+                                    '<option value="Parçada Anlam">Parçada Anlam</option>\n' +
+                                    '<option value="Ses Bilgisi">Ses Bilgisi</option>\n' +
+                                    '<option value="Yazım Kuralları">Yazım Kuralları</option>\n' +
+                                    '<option value="Noktalama İşaretleri">Noktalama İşaretleri</option>\n' +
+                                    '<option value="Fiilimsi">Fiilimsi</option>\n' +
+                                    '<option value="Cümlenin Ögeleri">Cümlenin Ögeleri</option>\n' +
+                                    '<option value="Cümle Vurgusu">Cümle Vurgusu</option>\n' +
+                                    '<option value="Fiillerde Çatı">Fiillerde Çatı</option>\n' +
+                                    '<option value="Cümle Çeşitleri">Cümle Çeşitleri</option>\n' +
+                                    '<option value="Anlatım Bozuklukları">Anlatım Bozuklukları</option>\n' +
+                                    '<option value="Söz Sanatları">Söz Sanatları</option>\n' +
+                                    '<option value="Yazı (Metin) Türleri">Yazı (Metin) Türleri</option>');
+                                $('#unitKonu').removeAttr('disabled');
+                                break;
+                            case "Matematik":
+                                $('#unitKonu').text(' ');
+                                $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Çarpanlar ve Katlar">Çarpanlar ve Katlar</option>\n' +
+                                    '<option value="Üslü İfadeler">Üslü İfadeler</option>\n' +
+                                    '<option value="Kareköklü İfadeler">Kareköklü İfadeler</option>\n' +
+                                    '<option value="Veri Analizi">Veri Analizi</option>\n' +
+                                    '<option value="Basit Olayların Olma Olasılığı">Basit Olayların Olma Olasılığı</option>\n' +
+                                    '<option value="Cebirsel İfadeler ve Özdeşlikler">Cebirsel İfadeler ve Özdeşlikler</option>\n' +
+                                    '<option value="Doğrusal Denklemler">Doğrusal Denklemler</option>\n' +
+                                    '<option value="Eşitsizlikler">Eşitsizlikler</option>\n' +
+                                    '<option value="Üçgenler">Üçgenler</option>\n' +
+                                    '<option value="Eşlik Benzerlik">Eşlik Benzerlik</option>\n' +
+                                    '<option value="Dönüşüm Geometrisi">Dönüşüm Geometrisi</option>\n' +
+                                    '<option value="Geometrik Cisimler">Geometrik Cisimler</option>');
+                                $('#unitKonu').removeAttr('disabled');
+                                break;
+                            case "Fen Bilimleri":
+                                $('#unitKonu').text(' ');
+                                $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Mevsimler ve İklim">Mevsimler ve İklim</option>\n' +
+                                    '<option value="DNA ve Genetik Kod">DNA ve Genetik Kod</option>\n' +
+                                    '<option value="Basınç">Basınç</option>\n' +
+                                    '<option value="Madde ve Endüstri">Madde ve Endüstri</option>\n' +
+                                    '<option value="Basit Makineler">Basit Makineler</option>\n' +
+                                    '<option value="Enerji Dönüşümleri ve Çevre Bilimi">Enerji Dönüşümleri ve Çevre Bilimi</option>\n' +
+                                    '<option value="Elektrik Yükleri ve Elektrik Enerjisi">Elektrik Yükleri ve Elektrik Enerjisi</option>');
+                                $('#unitKonu').removeAttr('disabled');
+                                break;
+                            case "İnkılap Tarihi":
+                                $('#unitKonu').text(' ');
+                                $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Bir Kahraman Doğuyor">Bir Kahraman Doğuyor</option>\n' +
+                                    '<option value="Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar">Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar</option>\n' +
+                                    '<option value="Milli Bir Destan: Ya İstiklal Ya Ölüm!">Milli Bir Destan: Ya İstiklal Ya Ölüm!</option>\n' +
+                                    '<option value="Atatürkçülük ve Çağdağlaşan Türkiye">Atatürkçülük ve Çağdağlaşan Türkiye</option>\n' +
+                                    '<option value="Demokratikleşme Çabaları">Demokratikleşme Çabaları</option>\n' +
+                                    '<option value="Atatürk Dönemi Türk Dış Politikası">Atatürk Dönemi Türk Dış Politikası</option>\n' +
+                                    '<option value="Atatürk\'ün Ölümü ve Sonrası">Atatürk\'ün Ölümü ve Sonrası</option>');
+                                $('#unitKonu').removeAttr('disabled');
+                                break;
+                            case "Din Kültürü":
+                                $('#unitKonu').text(' ');
+                                $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Kader İnancı">Kader İnancı</option>\n' +
+                                    '<option value="Zekat ve Sadaka">Zekat ve Sadaka</option>\n' +
+                                    '<option value="Din ve Hayat">Din ve Hayat</option>\n' +
+                                    '<option value="Hz.Muhammed\'in Örnekliği">Hz.Muhammed\'in Örnekliği</option>\n' +
+                                    '<option value="Kur\'an-ı Kerim ve Özellikleri">Kur\'an-ı Kerim ve Özellikleri</option>');
+                                $('#unitKonu').removeAttr('disabled');
+                                break;
+                            case "Yabancı Dil":
+                                $('#unitKonu').text(' ');
+                                $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Friendship">Friendship</option>\n' +
+                                    '<option value="Teen Life">Teen Life</option>\n' +
+                                    '<option value="In The Kitchen">In The Kitchen</option>\n' +
+                                    '<option value="On The Phone ">On The Phone </option>\n' +
+                                    '<option value="The Internet">The Internet</option>\n' +
+                                    '<option value="Adventures">Adventures</option>\n' +
+                                    '<option value="Tourism">Tourism</option>\n' +
+                                    '<option value="Chores">Chores</option>\n' +
+                                    '<option value="Science">Science</option>\n' +
+                                    '<option value="Natural Forces">Natural Forces</option>');
+                                $('#unitKonu').removeAttr('disabled');
+                                break;
+                            default:
+                                $('#unitKonu').text(' ');
+                                console.warn('Derse seçimine ait konu bulunamadı!')
+                                break;
+                        }
                     } else {
                         // TYT-AYT sınav konuları yükle
                         switch ($(this).val()) {
