@@ -24,6 +24,14 @@ $(document).ready(function () {
 
             current_user = user.uid;
 
+
+            $("#logout").click(function () {
+                firebase.auth().signOut()
+                    .then(function () {
+                        window.location.href = "giris-yap.html";
+                    })
+            })
+
             $("#saveProfileBtn").click(function () {
                 var name = $('#name').val()
                 var surname = $('#surname').val()
