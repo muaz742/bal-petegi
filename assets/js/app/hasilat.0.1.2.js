@@ -28,21 +28,24 @@ $(document).ready(function () {
                     })
             });
 
-
+            // kullanıcı kayıtlarını çek
             var users = firebase.database().ref().child('users').child(current_user);
             users.on('value', function (snapshot) {
 
                 // kullanıcı isim ve soyismini ekranda göster
-                $('#birthdate').val(snapshot.val().birthdate)
                 guncelleAtif(snapshot.val().name, snapshot.val().surname)
 
+                // soru kayıtlarını çek
                 var shot = snapshot.val()['records'];
                 try {
                     var keys = Object.keys(shot);
                 } catch (e) {
                     console.warn(e);
                 }
+                // konu kayıtlarını çek
                 var duration = snapshot.val()['duration'];
+
+                // değişkenleri tanımla
                 var sonuc = [];
                 var sonucHaftalik = [];
                 var sonucGunluk = [];
@@ -70,6 +73,7 @@ $(document).ready(function () {
                 // soru kayıtlarını işle
                 try {
 
+                    // her kayıt için çalış
                     for (i = 0; i < keys.length; i++) {
 
                         // zaman kaydını al, tarihe dönüştür
@@ -125,45 +129,56 @@ $(document).ready(function () {
                 }
 
                 // süre kayıtlarını işle
-                for (key in duration) {
+                try{
+                    // her kayıt için çalış
+                    for (key in duration) {
 
-                    var sureDers = duration[key]['lesson'];
-                    var sureMiktar = duration[key]['count'];
-                    var sureTarih = epochToDate(duration[key]['time']);
-                    var sureSaat = epochToTime(duration[key]['time']);
+                        // ders kaydını al
+                        var sureDers = duration[key]['lesson'];
 
-                    // gün içinde çalışılan süreleri derslere göre topla
-                    if (geceYarisi < duration[key]['time']) {
-                        if (sonucGunlukSureDersli[sureDers] == null) {
-                            sonucGunlukSureDersli[sureDers] = Number(sureMiktar);
+                        // süre miktarını al
+                        var sureMiktar = duration[key]['count'];
+
+                        // zaman kaydını al, tarihe dönüştür
+                        var sureTarih = epochToDate(duration[key]['time']);
+                        var sureSaat = epochToTime(duration[key]['time']);
+
+                        // gün içinde çalışılan süreleri derslere göre topla
+                        if (geceYarisi < duration[key]['time']) {
+                            if (sonucGunlukSureDersli[sureDers] == null) {
+                                sonucGunlukSureDersli[sureDers] = Number(sureMiktar);
+                            } else {
+                                sonucGunlukSureDersli[sureDers] = sonucGunlukSureDersli[sureDers] + Number(sureMiktar);
+                            }
+                        }
+
+                        // hafta içinde çalışılan süreyi derslere göre topla
+                        if (gecenHafta < duration[key]['time']) {
+                            if (sonucHaftalikDersli[sureDers] == null) {
+                                sonucHaftalikDersli[sureDers] = Number(sureMiktar);
+                            } else {
+                                sonucHaftalikDersli[sureDers] = sonucHaftalikDersli[sureDers] + Number(sureMiktar);
+                            }
+                        }
+
+                        // toplam çalışılan süreyi günlere göre topla
+                        if (sonucDersli[sureTarih] == null) {
+                            sonucDersli[sureTarih] = Number(sureMiktar);
                         } else {
-                            sonucGunlukSureDersli[sureDers] = sonucGunlukSureDersli[sureDers] + Number(sureMiktar);
+                            sonucDersli[sureTarih] = sonucDersli[sureTarih] + Number(sureMiktar);
+                        }
+
+                        // girilen soru kayıtlarını topla
+                        listeGirilenSureler[duration[key]['time']] = {
+                            "tarih": sureTarih,
+                            "saat": sureSaat,
+                            "ders": sureDers,
+                            "miktar": sureMiktar,
+                            "key": key
                         }
                     }
-
-                    // hafta içinde çalışılan süreyi derslere göre topla
-                    if (gecenHafta < duration[key]['time']) {
-                        if (sonucHaftalikDersli[sureDers] == null) {
-                            sonucHaftalikDersli[sureDers] = Number(sureMiktar);
-                        } else {
-                            sonucHaftalikDersli[sureDers] = sonucHaftalikDersli[sureDers] + Number(sureMiktar);
-                        }
-                    }
-                    // toplam çalışılan süreyi günlere göre topla
-                    if (sonucDersli[sureTarih] == null) {
-                        sonucDersli[sureTarih] = Number(sureMiktar);
-                    } else {
-                        sonucDersli[sureTarih] = sonucDersli[sureTarih] + Number(sureMiktar);
-                    }
-
-                    // girilen soru kayıtlarını topla
-                    listeGirilenSureler[duration[key]['time']] = {
-                        "tarih": sureTarih,
-                        "saat": sureSaat,
-                        "ders": sureDers,
-                        "miktar": sureMiktar,
-                        "key": key
-                    }
+                }catch (e) {
+                    console.warn(e);
                 }
 
                 // çözülen soru kayıtlarını listele
@@ -271,7 +286,7 @@ $(document).ready(function () {
                 }
                 haftalikSureGrafik(haftalikDerslerKonu, haftalikSorularKonu);
 
-                // toplanan günlük çalışma sürelerini tarihe göre grafiğe yazdır
+                // toplanan günlük çalışma sürelerini tarihe göre çizgi grafiğe yazdır
                 var tarihlerKonu = [];
                 var soruSayilariKonu = [];
                 for (var key in sonucDersli) {
@@ -290,6 +305,7 @@ $(document).ready(function () {
                 var sorular = [3, 7, 3, 8, 5];
 
 
+                // konu-soru sürelerini grafiklere yazdır
                 var derslerGunlukSoruSure = [];
                 var sorularGunlukSoruSure = [];
                 var surelerGunlukSoruSure = [];
@@ -299,7 +315,7 @@ $(document).ready(function () {
                 guncelleToplamSoruSure(tarihler, sorular, sureler);
 
 
-                /* günlü grafik altına tarih göster */
+                /* günlü grafikler altına tarih göster */
                 var d = new Date().getTime();
                 document.getElementById('todaySoru').innerText = epochToDate(d);
                 document.getElementById('todayKonu').innerText = epochToDate(d);
@@ -308,10 +324,8 @@ $(document).ready(function () {
             // giriş yapılmamış ise giriş ekranına yönlendir
             window.location.href = "giris-yap.html";
         }
-    })
-
-
-})
+    });
+});
 
 function soruSil(key) {
     firebase.database().ref("users/" + current_user).child("records").child(key).remove();

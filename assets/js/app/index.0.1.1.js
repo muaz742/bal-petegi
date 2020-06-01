@@ -36,17 +36,8 @@ $(document).ready(function () {
             userRef.on("value", function (snapshot) {
 
                 if (snapshot.val()) {
-                    $('#name').val(snapshot.val().name)
-                    $('#surname').val(snapshot.val().surname)
-                    $('#city').val(snapshot.val().city)
-                    try {
-                        $('#grade').val(snapshot.val().grade)
-                    } catch (e) {
-                        console.error(e);
-                    }
-                    $('#birthdate').val(snapshot.val().birthdate)
 
-
+                    // kullanıcı isim ve soyismini ekranda göster
                     guncelleAtif(snapshot.val().name, snapshot.val().surname)
 
                 }
