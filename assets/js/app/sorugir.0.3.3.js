@@ -545,16 +545,17 @@ $(document).ready(function () {
                             case "Yabancı Dil":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
-                                    '<option value="Dilbilgisi (Tenses, Conjunctions, Prepositions, Quantifiers) ">Dilbilgisi (Tenses, Conjunctions, Prepositions, Quantifiers) </option>\n' +
-                                    '<option value="Cloze Test (Boşluk Doldurma)">Cloze Test (Boşluk Doldurma)</option>\n' +
-                                    '<option value="Cümle Tamamlama ">Cümle Tamamlama </option>\n' +
-                                    '<option value="Çeviri (Tr-Eng ve Eng-Tr) ">Çeviri (Tr-Eng ve Eng-Tr) </option>\n' +
-                                    '<option value="Paragraf Soruları">Paragraf Soruları</option>\n' +
-                                    '<option value="Anlamca En Yakın Cümleyi Bulma ">Anlamca En Yakın Cümleyi Bulma </option>\n' +
+                                    '<option value="Kelime Bilgisi">Kelime Bilgisi</option>\n' +
+                                    '<option value="Dilbilgisi">Dilbilgisi</option>\n' +
+                                    '<option value="Boşluk Doldurma">Boşluk Doldurma</option>\n' +
+                                    '<option value="Cümleyi Tamamlama">Cümleyi Tamamlama</option>\n' +
+                                    '<option value="Yabancı Dil / TR Cümlenin Karşılığını Bulma">Yabancı Dil / TR Cümlenin Karşılığını Bulma</option>\n' +
+                                    '<option value="Paragraf">Paragraf</option>\n' +
+                                    '<option value="Anlamca Yakın Cümleyi Bulma">Anlamca Yakın Cümleyi Bulma</option>\n' +
                                     '<option value="Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma">Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma</option>\n' +
-                                    '<option value="Verilen Durumda Söylenecek İfadeyi Bulma">Verilen Durumda Söylenecek İfadeyi Bulma</option>\n' +
-                                    '<option value="Diyalog Tamamlama">Diyalog Tamamlama</option>\n' +
-                                    '<option value="Anlam Bütünlüğünü Bozan Cümleyi Bulma Vocabulary (Kelime Bilgisi)">Anlam Bütünlüğünü Bozan Cümleyi Bulma Vocabulary (Kelime Bilgisi)</option>');
+                                    '<option value="Verilen Durumda Söylenecek İfadeli Bulma">Verilen Durumda Söylenecek İfadeli Bulma</option>\n' +
+                                    '<option value="Diyalog Tamamlama">Diyalog Tamamlama</option>\n'+
+                                    '<option value="Anlam Bütünlüğünü Bozan Cümleyi Bulma">Anlam Bütünlüğünü Bozan Cümleyi Bulma</option>');
                                 $('#unit').removeAttr('disabled');
                                 break;
                             default:
@@ -924,16 +925,17 @@ $(document).ready(function () {
                             case "Yabancı Dil":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
-                                    '<option value="Dilbilgisi (Tenses, Conjunctions, Prepositions, Quantifiers) ">Dilbilgisi (Tenses, Conjunctions, Prepositions, Quantifiers) </option>\n' +
-                                    '<option value="Cloze Test (Boşluk Doldurma)">Cloze Test (Boşluk Doldurma)</option>\n' +
-                                    '<option value="Cümle Tamamlama ">Cümle Tamamlama </option>\n' +
-                                    '<option value="Çeviri (Tr-Eng ve Eng-Tr) ">Çeviri (Tr-Eng ve Eng-Tr) </option>\n' +
-                                    '<option value="Paragraf Soruları">Paragraf Soruları</option>\n' +
-                                    '<option value="Anlamca En Yakın Cümleyi Bulma ">Anlamca En Yakın Cümleyi Bulma </option>\n' +
+                                    '<option value="Kelime Bilgisi">Kelime Bilgisi</option>\n' +
+                                    '<option value="Dilbilgisi">Dilbilgisi</option>\n' +
+                                    '<option value="Boşluk Doldurma">Boşluk Doldurma</option>\n' +
+                                    '<option value="Cümleyi Tamamlama">Cümleyi Tamamlama</option>\n' +
+                                    '<option value="Yabancı Dil / TR Cümlenin Karşılığını Bulma">Yabancı Dil / TR Cümlenin Karşılığını Bulma</option>\n' +
+                                    '<option value="Paragraf">Paragraf</option>\n' +
+                                    '<option value="Anlamca Yakın Cümleyi Bulma">Anlamca Yakın Cümleyi Bulma</option>\n' +
                                     '<option value="Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma">Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma</option>\n' +
-                                    '<option value="Verilen Durumda Söylenecek İfadeyi Bulma">Verilen Durumda Söylenecek İfadeyi Bulma</option>\n' +
-                                    '<option value="Diyalog Tamamlama">Diyalog Tamamlama</option>\n' +
-                                    '<option value="Anlam Bütünlüğünü Bozan Cümleyi Bulma Vocabulary (Kelime Bilgisi)">Anlam Bütünlüğünü Bozan Cümleyi Bulma Vocabulary (Kelime Bilgisi)</option>');
+                                    '<option value="Verilen Durumda Söylenecek İfadeli Bulma">Verilen Durumda Söylenecek İfadeli Bulma</option>\n' +
+                                    '<option value="Diyalog Tamamlama">Diyalog Tamamlama</option>\n'+
+                                    '<option value="Anlam Bütünlüğünü Bozan Cümleyi Bulma">Anlam Bütünlüğünü Bozan Cümleyi Bulma</option>');
                                 $('#unitKonu').removeAttr('disabled');
                                 break;
                             default:
