@@ -129,7 +129,7 @@ $(document).ready(function () {
                 }
 
                 // süre kayıtlarını işle
-                try{
+                try {
                     // her kayıt için çalış
                     for (key in duration) {
 
@@ -177,7 +177,7 @@ $(document).ready(function () {
                             "key": key
                         }
                     }
-                }catch (e) {
+                } catch (e) {
                     console.warn(e);
                 }
 
@@ -298,27 +298,323 @@ $(document).ready(function () {
                 }
                 gunlukSureGrafik(tarihlerKonu, soruSayilariKonu);
 
-                // TEMP örnek veriler
-                var dersler = ['Matematik', 'Fizik', 'Kimya', 'İngilizce', 'Biyoloji'];
-                var tarihler = ['25.5.2020', '26.5.2020', '27.5.2020'];
-                var sureler = [9, 4, 5, 2, 7];
-                var sorular = [3, 7, 3, 8, 5];
+                // sınıfa göre dersler şablonu oluştur
+                var sablonHasilatGunluk = {}
+                if (snapshot.val().grade < 9) {
+                    sablonHasilatGunluk = {
+                        0: {
+                            "ders": "Türkçe",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        1: {
+                            "ders": "Matematik",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        2: {
+                            "ders": "Fen Bilimleri",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        3: {
+                            "ders": "inkılap Tarihi",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        4: {
+                            "ders": "Din Kültürü",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        4: {
+                            "ders": "Yabancı Dil",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                    }
+                } else {
+                    sablonHasilatGunluk = {
+                        0: {
+                            "ders": "Matematik",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        1: {
+                            "ders": "Geometri",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        3: {
+                            "ders": "Fizik",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        4: {
+                            "ders": "Kimya",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        5: {
+                            "ders": "Biyoloji",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        6: {
+                            "ders": "Türkçe",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        7: {
+                            "ders": "Edebiyat",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        8: {
+                            "ders": "Tarih",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        9: {
+                            "ders": "Coğrafya",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        10: {
+                            "ders": "Din Kültürü",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        10: {
+                            "ders": "Felsefe",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        10: {
+                            "ders": "Yabancı Dil",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                    }
+                }
+                // derse göre son bir hafta içindeki soru sürelerini topla
+                for (key in shot) {
+                    if (shot[key].time > geceYarisi) {
+                        for (keyx in sablonHasilatGunluk) {
+                            if (sablonHasilatGunluk[keyx].ders == shot[key].lesson) {
+                                sablonHasilatGunluk[keyx].sureSoru = sablonHasilatGunluk[keyx].sureSoru + Number(shot[key].minutes)
+                            }
+                        }
+                    }
+                }
+                // derse göre son bir hafta içindeki konu sürelerini topla
+                for (key in duration) {
+                    if (duration[key].time > geceYarisi) {
+                        for (keyx in sablonHasilatGunluk) {
+                            if (sablonHasilatGunluk[keyx].ders == duration[key].lesson) {
+                                sablonHasilatGunluk[keyx].sureKonu = sablonHasilatGunluk[keyx].sureKonu + Number(duration[key].count)
+                            }
+                        }
+                    }
+                }
+                // konu-soru sürelerini günlük grafikte derse göre göster
+                var dersKonuSoruGunluk = []
+                var sureSoruGunluk = []
+                var sureKonuGunluk = []
+                for (key in sablonHasilatGunluk) {
+                    dersKonuSoruGunluk.push(sablonHasilatGunluk[key].ders)
+                    sureSoruGunluk.push(sablonHasilatGunluk[key].sureSoru)
+                    sureKonuGunluk.push(sablonHasilatGunluk[key].sureKonu)
+                }
+                guncelleGunlukSoruSure(dersKonuSoruGunluk, sureSoruGunluk, sureKonuGunluk);
 
+                // sınıfa göre dersler şablonu oluştur
+                var sablonHasilatHaftalik = {}
+                if (snapshot.val().grade < 9) {
+                    sablonHasilatHaftalik = {
+                        0: {
+                            "ders": "Türkçe",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        1: {
+                            "ders": "Matematik",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        2: {
+                            "ders": "Fen Bilimleri",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        3: {
+                            "ders": "inkılap Tarihi",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        4: {
+                            "ders": "Din Kültürü",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        4: {
+                            "ders": "Yabancı Dil",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                    }
+                } else {
+                    sablonHasilatHaftalik = {
+                        0: {
+                            "ders": "Matematik",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        1: {
+                            "ders": "Geometri",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        3: {
+                            "ders": "Fizik",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        4: {
+                            "ders": "Kimya",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        5: {
+                            "ders": "Biyoloji",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        6: {
+                            "ders": "Türkçe",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        7: {
+                            "ders": "Edebiyat",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        8: {
+                            "ders": "Tarih",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        9: {
+                            "ders": "Coğrafya",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        10: {
+                            "ders": "Din Kültürü",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        10: {
+                            "ders": "Felsefe",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                        10: {
+                            "ders": "Yabancı Dil",
+                            "sureSoru": 0,
+                            "sureKonu": 0
+                        },
+                    }
+                }
+                // derse göre son bir hafta içindeki soru sürelerini topla
+                for (key in shot) {
+                    if (shot[key].time > gecenHafta) {
+                        for (keyx in sablonHasilatHaftalik) {
+                            if (sablonHasilatHaftalik[keyx].ders == shot[key].lesson) {
+                                sablonHasilatHaftalik[keyx].sureSoru = sablonHasilatHaftalik[keyx].sureSoru + Number(shot[key].minutes)
+                            }
+                        }
+                    }
+                }
+                // derse göre son bir hafta içindeki konu sürelerini topla
+                for (key in duration) {
+                    if (duration[key].time > gecenHafta) {
+                        for (keyx in sablonHasilatHaftalik) {
+                            if (sablonHasilatHaftalik[keyx].ders == duration[key].lesson) {
+                                sablonHasilatHaftalik[keyx].sureKonu = sablonHasilatHaftalik[keyx].sureKonu + Number(duration[key].count)
+                            }
+                        }
+                    }
+                }
+                // konu-soru sürelerini günlük grafikte derse göre göster
+                var dersKonuSoruHaftalik = []
+                var sureSoruHaftalik = []
+                var sureKonuHaftalik = []
+                for (key in sablonHasilatHaftalik) {
+                    dersKonuSoruHaftalik.push(sablonHasilatHaftalik[key].ders)
+                    sureSoruHaftalik.push(sablonHasilatHaftalik[key].sureSoru)
+                    sureKonuHaftalik.push(sablonHasilatHaftalik[key].sureKonu)
+                }
 
-                // konu-soru sürelerini grafiklere yazdır
-                var derslerGunlukSoruSure = [];
-                var sorularGunlukSoruSure = [];
-                var surelerGunlukSoruSure = [];
+                guncelleHaftalikSoruSure(dersKonuSoruHaftalik, sureSoruHaftalik, sureKonuHaftalik);
 
-                guncelleGunlukSoruSure(dersler, sorular, sureler);
-                guncelleHaftalikSoruSure(dersler, sorular, sureler);
-                guncelleToplamSoruSure(tarihler, sorular, sureler);
+                // son 7 gün şablonu oluştur
+                var soruSonBirHafta = {};
+                var i = 0;
+                var gun = new Date();
+                gun.setDate(gun.getDate() - 7);
+                while (i < 7) {
+                    gun.setDate(gun.getDate() + 1);
+                    var result = epochToDate(gun);
+                    soruSonBirHafta[result] = 0;
+                    i++;
+                }
 
+                // derslere ait süreleri topla
+                for (key in shot) {
+                    if (shot[key].time > gecenHafta) {
+                        var tarih = epochToDate(shot[key].time);
+                        soruSonBirHafta[tarih] = soruSonBirHafta[tarih] + Number(shot[key].minutes)
+                    }
+                }
+
+                // son 7 gün şablonu oluştur
+                var konuSonBirHafta = {};
+                var i = 0;
+                var gun = new Date();
+                gun.setDate(gun.getDate() - 7);
+                while (i < 7) {
+                    gun.setDate(gun.getDate() + 1);
+                    var result = epochToDate(gun);
+                    konuSonBirHafta[result] = 0;
+                    i++;
+                }
+
+                // konulara ait süreleri topla
+                for (key in duration) {
+                    if (duration[key].time > gecenHafta) {
+                        var tarih = epochToDate(duration[key].time)
+                        konuSonBirHafta[tarih] = konuSonBirHafta[tarih] + Number(duration[key].count);
+                    }
+                }
+
+                // konu-soru sürelerini performans grafiğinde göster
+                var tarihKonuSoruPerformans = []
+                var sureSoruPerformans = []
+                var sureKonuPerformans = []
+                for (key in konuSonBirHafta) {
+                    tarihKonuSoruPerformans.push(key)
+                    sureSoruPerformans.push(soruSonBirHafta[key])
+                    sureKonuPerformans.push(konuSonBirHafta[key])
+                }
+                guncelleToplamSoruSure(tarihKonuSoruPerformans, sureSoruPerformans, sureKonuPerformans);
 
                 /* günlü grafikler altına tarih göster */
                 var d = new Date().getTime();
                 document.getElementById('todaySoru').innerText = epochToDate(d);
                 document.getElementById('todayKonu').innerText = epochToDate(d);
+                document.getElementById('todaySoruKonu').innerText = epochToDate(d);
             });
         } else {
             // giriş yapılmamış ise giriş ekranına yönlendir
