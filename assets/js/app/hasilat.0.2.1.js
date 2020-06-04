@@ -318,7 +318,7 @@ $(document).ready(function () {
                             "sureKonu": 0
                         },
                         3: {
-                            "ders": "inkılap Tarihi",
+                            "ders": "İnkılap Tarihi",
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
@@ -327,11 +327,11 @@ $(document).ready(function () {
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
-                        4: {
+                        5: {
                             "ders": "Yabancı Dil",
                             "sureSoru": 0,
                             "sureKonu": 0
-                        },
+                        }
                     }
                 } else {
                     sablonHasilatGunluk = {
@@ -385,16 +385,16 @@ $(document).ready(function () {
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
-                        10: {
+                        11: {
                             "ders": "Felsefe",
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
-                        10: {
+                        12: {
                             "ders": "Yabancı Dil",
                             "sureSoru": 0,
                             "sureKonu": 0
-                        },
+                        }
                     }
                 }
                 // derse göre son bir hafta içindeki soru sürelerini topla
@@ -448,7 +448,7 @@ $(document).ready(function () {
                             "sureKonu": 0
                         },
                         3: {
-                            "ders": "inkılap Tarihi",
+                            "ders": "İnkılap Tarihi",
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
@@ -457,11 +457,11 @@ $(document).ready(function () {
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
-                        4: {
+                        5: {
                             "ders": "Yabancı Dil",
                             "sureSoru": 0,
                             "sureKonu": 0
-                        },
+                        }
                     }
                 } else {
                     sablonHasilatHaftalik = {
@@ -515,16 +515,16 @@ $(document).ready(function () {
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
-                        10: {
+                        11: {
                             "ders": "Felsefe",
                             "sureSoru": 0,
                             "sureKonu": 0
                         },
-                        10: {
+                        12: {
                             "ders": "Yabancı Dil",
                             "sureSoru": 0,
                             "sureKonu": 0
-                        },
+                        }
                     }
                 }
                 // derse göre son bir hafta içindeki soru sürelerini topla
