@@ -53,6 +53,7 @@ $(document).ready(function () {
 
             $("#addLessonDuration").click(function () {
                 var subject = $('#lessonKonu').val()
+                var unit = $('#unitKonu').val()
                 var lessonDuration = $('#lessonDuration').val()
                 var date = $('#dateKonu').val();
                 var time = $('#timeKonu').val();
@@ -63,7 +64,8 @@ $(document).ready(function () {
                     {
                         lesson: subject,
                         count: lessonDuration,
-                        time: date
+                        time: date,
+                        unit: unit
                     }
                 );
 
