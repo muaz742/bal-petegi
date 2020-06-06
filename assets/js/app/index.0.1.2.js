@@ -12,6 +12,7 @@ var config = {
 
 // firebase bağlantısı başlat
 firebase.initializeApp(config);
+firebase.analytics();
 
 var current_user = "";
 

@@ -10,6 +10,7 @@ var config = {
 };
 
 firebase.initializeApp(config);
+firebase.analytics()
 
 var current_user = "";
 

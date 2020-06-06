@@ -12,6 +12,7 @@ var config = {
 
 // ön tanımları firebase içine tanımla
 firebase.initializeApp(config);
+firebase.analytics();
 
 var current_user = "";
 
