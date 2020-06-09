@@ -548,6 +548,7 @@ $(document).ready(function () {
                             case "Yabancı Dil":
                                 $('#unit').text(' ');
                                 $('#unit').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Kelime Bilgisi">Kelime Bilgisi</option>\n' +
                                     '<option value="Dilbilgisi">Dilbilgisi</option>\n' +
                                     '<option value="Boşluk Doldurma">Boşluk Doldurma</option>\n' +
@@ -928,6 +929,7 @@ $(document).ready(function () {
                             case "Yabancı Dil":
                                 $('#unitKonu').text(' ');
                                 $('#unitKonu').append('<option value="------">------</option>\n' +
+                                    '<option value="Genel">Genel</option>\n' +
                                     '<option value="Kelime Bilgisi">Kelime Bilgisi</option>\n' +
                                     '<option value="Dilbilgisi">Dilbilgisi</option>\n' +
                                     '<option value="Boşluk Doldurma">Boşluk Doldurma</option>\n' +
