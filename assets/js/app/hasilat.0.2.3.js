@@ -993,9 +993,15 @@ function guncelleGunlukSoruSure(dersler, sorular, sureler) {
             responsive: true,
             scales: {
                 xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
                     stacked: true,
                 }],
                 yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
                     stacked: true
                 }]
             }
@@ -1078,9 +1084,15 @@ function guncelleHaftalikSoruSure(dersler, sorular, sureler) {
             responsive: true,
             scales: {
                 xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
                     stacked: true,
                 }],
                 yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
                     stacked: true
                 }]
             }
@@ -1129,10 +1141,12 @@ function guncelleToplamSoruSure(dersler, sorular, sureler) {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
                     position: 'left',
-                    id: 'y-axis-1', ticks: {
+                    id: 'y-axis-1',
+                    ticks: {
                         beginAtZero: true
                     }
-                }, {
+                },
+                    {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
                     position: 'right',
