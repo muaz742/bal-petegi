@@ -960,15 +960,15 @@ $(document).ready(function () {
 
     // giriş yapıldığında net bilgisini güncelle
     document.getElementById('denemeDogru').addEventListener("keyup", function (evt) {
-        console.log(this.value);
+        //console.log(this.value);
         netGuncelle();
     }, false);
     document.getElementById('denemeYanlis').addEventListener("keyup", function (evt) {
-        console.log(this.value);
+        //console.log(this.value);
         netGuncelle();
     }, false);
     document.getElementById('denemeBos').addEventListener("keyup", function (evt) {
-        console.log(this.value);
+        //console.log(this.value);
         netGuncelle();
     }, false);
     $('#tipDeneme').on('change', function () {
@@ -981,20 +981,12 @@ $(document).ready(function () {
     anlikZamaniDenemeKaydiGirKismindaGoster();
 })
 
-// oturumu kapat butonuna tıklandığıdna
-$("#logout").click(function () {
-    firebase.auth().signOut()
-        .then(function () {
-            window.location.href = "giris-yap.html";
-        })
-})
 
-// ekran üstünde kullanıcı adı ve soyadını göster
-function guncelleAtif(isim, soyisim) {
-    var kisi = isim + " " + soyisim;
-    var mesaj = 'Süper Arı ' + kisi;
-    $('#ekranAtif').text(mesaj);
-}
+
+
+/**
+ * Soru & Konu Gir Fonksiyonları
+ */
 
 /** anlık zamanı soru gir kısmında gösterir
  *  muaz wrote with support by dilruba - 20200527-005746
@@ -1172,10 +1164,10 @@ function netGuncelle() {
     var sinavTipi = $('#tipDeneme').val();
     var dogru = $('#denemeDogru').val();
     var yanlis = $('#denemeYanlis').val();
-    console.log("tip: " + sinavTipi)
-    console.log("doğru: " + dogru)
-    console.log("yanlış: " + yanlis)
+    //console.log("tip: " + sinavTipi)
+    //console.log("doğru: " + dogru)
+    //console.log("yanlış: " + yanlis)
     var net = netHesapla(Number(sinavTipi), Number(dogru), Number(yanlis));
-    console.log("net: " + net);
+    //console.log("net: " + net);
     $('#denemeNet').text("Net: " + net);
 }

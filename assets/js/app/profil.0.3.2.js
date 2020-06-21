@@ -58,18 +58,3 @@ $(document).ready(function () {
 
 
 })
-
-// oturumu kapat butonuna tıklandığıdna
-$("#logout").click(function () {
-    firebase.auth().signOut()
-        .then(function () {
-            window.location.href = "giris-yap.html";
-        })
-})
-
-// ekran üstünde kullanıcı adı ve soyadını göster
-function guncelleAtif(isim, soyisim) {
-    var kisi = isim + " " + soyisim;
-    var mesaj = 'Süper Arı ' + kisi;
-    $('#ekranAtif').text(mesaj);
-}

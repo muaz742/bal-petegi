@@ -5,14 +5,6 @@ $(document).ready(function () {
         if (user) {
 
             current_user = user.uid;
-            // console.log(current_user);
-
-            $("#logout").click(function () {
-                firebase.auth().signOut()
-                    .then(function () {
-                        window.location.href = "giris-yap.html";
-                    })
-            });
 
             // kullanıcı kayıtlarını çek
             var users = firebase.database().ref().child('users').child(current_user);
@@ -40,9 +32,6 @@ $(document).ready(function () {
                 var sonucHaftalikDersli = [];
                 var sonucDersli = [];
                 var listeGirilenSureler = {}
-
-                // console.log(keys.length);
-
 
                 // şimdiki zamana ait değeri hesapla
                 var simdi = new Date();
@@ -609,6 +598,10 @@ $(document).ready(function () {
     });
 });
 
+/**
+ * Hasılat Fonksiyonları
+ */
+
 function soruSil(key) {
     firebase.database().ref("users/" + current_user).child("records").child(key).remove();
 }
@@ -1148,11 +1141,4 @@ function guncelleToplamSoruSure(dersler, sorular, sureler) {
             }
         }
     });
-}
-
-// ekran üstünde kullanıcı adı ve soyadını göster
-function guncelleAtif(isim, soyisim) {
-    var kisi = isim + " " + soyisim;
-    var mesaj = 'Süper Arı ' + kisi;
-    $('#ekranAtif').text(mesaj);
 }

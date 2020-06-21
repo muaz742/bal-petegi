@@ -7,13 +7,6 @@ $(document).ready(function () {
 
             current_user = user.uid;
 
-            $("#logout").click(function () {
-                firebase.auth().signOut()
-                    .then(function () {
-                        window.location.href = "giris-yap.html";
-                    })
-            })
-
             var userRef = firebase.database().ref().child("users/" + current_user);
 
             userRef.on("value", function (snapshot) {
@@ -31,12 +24,4 @@ $(document).ready(function () {
         }
     })
 
-
 })
-
-
-function guncelleAtif(isim, soyisim) {
-    var kisi = isim + " " + soyisim;
-    var mesaj = 'Süper Arı ' + kisi;
-    $('#ekranAtif').text(mesaj);
-}

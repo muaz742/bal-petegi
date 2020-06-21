@@ -24,3 +24,25 @@ firebase.initializeApp(config);
 firebase.analytics();
 
 var current_user = "";
+
+/**
+ * Global Fonksiyonlar
+ */
+
+// ekran üstünde kullanıcı adı ve soyadını göster
+function guncelleAtif(isim, soyisim) {
+    var kisi = isim + " " + soyisim;
+    var mesaj = 'Süper Arı ' + kisi;
+    $('#ekranAtif').text(mesaj);
+}
+
+// Sayfa Yüklenmesi Tamamlandığında
+$(document).ready(function () {
+// oturumu kapat butonuna tıklandığıdna
+    $("#logout").click(function () {
+        firebase.auth().signOut()
+            .then(function () {
+                window.location.href = "giris-yap.html";
+            })
+    })
+})
