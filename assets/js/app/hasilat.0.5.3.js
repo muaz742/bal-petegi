@@ -11,7 +11,12 @@ $(document).ready(function () {
             users.on('value', function (snapshot) {
 
                 // kullanıcı isim ve soyismini ekranda göster
-                guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                try{
+                    guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                    hesaplaToplamSoruAtif(snapshot.val()['records'])
+                }catch (e) {
+                    console.warn(e)
+                }
 
                 // soru kayıtlarını çek
                 var shot = snapshot.val()['records'];

@@ -47,7 +47,12 @@ $(document).ready(function () {
                     }
                     // kullanıcı isim ve soyismini ekranda göster
                     $('#birthdate').val(snapshot.val().birthdate)
-                    guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                    try{
+                        guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                        hesaplaToplamSoruAtif(snapshot.val()['records'])
+                    }catch (e) {
+                        console.warn(e)
+                    }
                 }
             })
         } else {

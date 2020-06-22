@@ -36,6 +36,16 @@ function guncelleAtif(isim, soyisim) {
     $('#ekranAtif').text(mesaj);
 }
 
+// kişinin çözdüğü toplam soru sayısını hesapla
+function hesaplaToplamSoruAtif(obje){
+    var toplam = 0;
+    for (key in obje){
+        toplam = toplam+Number(obje[key].count);
+    }
+    var mesaj = 'Toplam '+toplam+' soru çözdün'
+    $('#erkanAtifSoruSayisi').text(mesaj);
+}
+
 // Sayfa Yüklenmesi Tamamlandığında
 $(document).ready(function () {
 // oturumu kapat butonuna tıklandığıdna

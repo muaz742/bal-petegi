@@ -14,8 +14,12 @@ $(document).ready(function () {
                 if (snapshot.val()) {
 
                     // kullanıcı isim ve soyismini ekranda göster
-                    guncelleAtif(snapshot.val().name, snapshot.val().surname)
-
+                    try{
+                        guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                        hesaplaToplamSoruAtif(snapshot.val()['records'])
+                    }catch (e) {
+                        console.warn(e)
+                    }
                 }
             })
         } else {

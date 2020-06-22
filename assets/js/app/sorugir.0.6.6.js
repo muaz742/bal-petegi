@@ -90,7 +90,12 @@ $(document).ready(function () {
             var userRef = firebase.database().ref().child("users/" + current_user);
             userRef.on("value", function (snapshot) {
                 if (snapshot.val()) {
-                    guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                    try{
+                        guncelleAtif(snapshot.val().name, snapshot.val().surname)
+                        hesaplaToplamSoruAtif(snapshot.val()['records'])
+                    }catch (e) {
+                        console.warn(e)
+                    }
 
                     // kullanıcı sınıf bilgisini tanımla
                     var grade = snapshot.val().grade
