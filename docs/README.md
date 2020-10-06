@@ -85,229 +85,229 @@ TYT-AYT sınavına hazırlanan kişinin sorumlu olduğu dersler
 
 #### Matematik
 
-Sayılar
-Rasyonel ve Ondalık Sayılar
-Bölme ve Bölünebilme, OBEB, OKEK
-Denklem Çözme, Eşitsizlikler ve Mutlak Değer
-Üslü - Köklü İfadeler
-Çarpanlara Ayırma ve Özdeşlikler
-Oran – Orantı
-Problemler
-Kümeler
-Fonksiyonlar
-Permütasyon – Kombinasyon – Binom - Olasılık
-Veri Analizi
-Polinomlar
-İkinci Dereceden Denklemler
-Karmaşık Sayılar
-Mantık
-Parabol 
-Logaritma
-Trigonometri
-Diziler ve Seriler
-Limit ve Süreklilik
-Türev
-İntegral
+* Sayılar
+* Rasyonel ve Ondalık Sayılar
+* Bölme ve Bölünebilme, OBEB, OKEK
+* Denklem Çözme, Eşitsizlikler ve Mutlak Değer
+* Üslü - Köklü İfadeler
+* Çarpanlara Ayırma ve Özdeşlikler
+* Oran – Orantı
+* Problemler
+* Kümeler
+* Fonksiyonlar
+* Permütasyon – Kombinasyon – Binom - Olasılık
+* Veri Analizi
+* Polinomlar
+* İkinci Dereceden Denklemler
+* Karmaşık Sayılar
+* Mantık
+* Parabol 
+* Logaritma
+* Trigonometri
+* Diziler ve Seriler
+* Limit ve Süreklilik
+* Türev
+* İntegral
 
 #### Geometri
 
-Geometrik Kavramlar
-Açılar
-Üçgenler
-Çokgenler ve Dörtgenler
-Çember ve Daire
-Noktanın ve Doğrunun Analitik İncelemesi
-Katı Cisimler
-Trigonometri
-Analitik Geometri
-Çemberin Analitik İncelemesi
+* Geometrik Kavramlar
+* Açılar
+* Üçgenler
+* Çokgenler ve Dörtgenler
+* Çember ve Daire
+* Noktanın ve Doğrunun Analitik İncelemesi
+* Katı Cisimler
+* Trigonometri
+* Analitik Geometri
+* Çemberin Analitik İncelemesi
 
 #### Fizik
 
-Fizik Bilimi
-Madde ve Özellikleri
-Isı ve Sıcaklık
-Basınç ve Kaldırma Kuvveti
-Kuvvet ve Hareket
-İş, Güç, Enerji
-Elektrostatik
-Elektrik ve Manyetizma
-Optik
-Dalgalar
-Dalga Mekaniği
-Modern Fizik
-Atom Fiziğine Giriş ve Radyoaktivite
+* Fizik Bilimi
+* Madde ve Özellikleri
+* Isı ve Sıcaklık
+* Basınç ve Kaldırma Kuvveti
+* Kuvvet ve Hareket
+* İş, Güç, Enerji
+* Elektrostatik
+* Elektrik ve Manyetizma
+* Optik
+* Dalgalar
+* Dalga Mekaniği
+* Modern Fizik
+* Atom Fiziğine Giriş ve Radyoaktivite
 
 #### Kimya
 
-Kimya Bilimi
-Atomun Yapısı
-Periyodik Sistem
-Kimyasal Türler Arası Etkileşimler
-Kimyanın Temel Kanunları
-Maddenin Halleri
-Asitler, Bazlar ve Tuzlar
-Karışımlar
-Modern Atom Teorisi
-Kimyasal Hesaplamalar
-Gazlar
-Sıvı Çözeltiler
-Kimya ve Enerji
-Tepkimelerde Hız ve Denge
-Kimya ve Elektrik
-Karbon Kimyasına Giriş
-Organik Kimya
-Hayatımızda Kimya
+* Kimya Bilimi
+* Atomun Yapısı
+* Periyodik Sistem
+* Kimyasal Türler Arası Etkileşimler
+* Kimyanın Temel Kanunları
+* Maddenin Halleri
+* Asitler, Bazlar ve Tuzlar
+* Karışımlar
+* Modern Atom Teorisi
+* Kimyasal Hesaplamalar
+* Gazlar
+* Sıvı Çözeltiler
+* Kimya ve Enerji
+* Tepkimelerde Hız ve Denge
+* Kimya ve Elektrik
+* Karbon Kimyasına Giriş
+* Organik Kimya
+* Hayatımızda Kimya
 
 #### Biyoloji
 
-Biyoloji Bilimi
-Canlıların Ortak Özellikleri
-Canlıların Temel Bileşenleri
-Canlıların Çeşitliliği ve Sınıflandırılması
-Hücre ve Yapısı
-Hücre Bölünmeleri ve Üreme Çeşitleri
-Kalıtım
-Ekosistem Ekolojisi
-Sinir Sistemi
-Endokrin Sistemi
-Duyu Organları
-Destek ve Hareket Sistemi
-Sindirim Sistemi
-Dolaşım Sistemi
-Vücudun Savunulması ve Bağışıklık
-Solunum Sistemi
-Boşaltım Sistemi
-Üreme Sistemi ve Embriyonik Gelişim
-Genden Proteine
-Biyoteknoloji ve Gen Mühendisliği
-Solunum
-Fotosentez - Kemosentez 
-Bitki Biyolojisi
+* Biyoloji Bilimi
+* Canlıların Ortak Özellikleri
+* Canlıların Temel Bileşenleri
+* Canlıların Çeşitliliği ve Sınıflandırılması
+* Hücre ve Yapısı
+* Hücre Bölünmeleri ve Üreme Çeşitleri
+* Kalıtım
+* Ekosistem Ekolojisi
+* Sinir Sistemi
+* Endokrin Sistemi
+* Duyu Organları
+* Destek ve Hareket Sistemi
+* Sindirim Sistemi
+* Dolaşım Sistemi
+* Vücudun Savunulması ve Bağışıklık
+* Solunum Sistemi
+* Boşaltım Sistemi
+* Üreme Sistemi ve Embriyonik Gelişim
+* Genden Proteine
+* Biyoteknoloji ve Gen Mühendisliği
+* Solunum
+* Fotosentez - Kemosentez 
+* Bitki Biyolojisi
 
 #### Türkçe
 
-Sözcük ve Söz Öbeklerinde Anlam
-Cümlenin Anlamı ve Yorumu
-Anlatım Bilgisi
-Paragraf Bilgisi
-Ses Bilgisi-Yazım-Noktalama
-Sözcükte Yapı (Ad, Sıfat, Zamir, Fiil...)
-Sözcük Türleri
-Cümlenin Ögeleri
-Cümle Türleri
-Anlatım Bozuklukları
-İletişim, Dil ve Kültür – Dillerin sınıflandırılması
+* Sözcük ve Söz Öbeklerinde Anlam
+* Cümlenin Anlamı ve Yorumu
+* Anlatım Bilgisi
+* Paragraf Bilgisi
+* Ses Bilgisi-Yazım-Noktalama
+* Sözcükte Yapı (Ad, Sıfat, Zamir, Fiil...)
+* Sözcük Türleri
+* Cümlenin Ögeleri
+* Cümle Türleri
+* Anlatım Bozuklukları
+* İletişim, Dil ve Kültür – Dillerin sınıflandırılması
 
 #### Edebiyat
 
-Güzel Sanatlar ve Edebiyat
-Coşku ve Heyecan Dile Getiren Metinler (Şiir)
-Olay Çevresinde Oluşan Edebi Metinler
-Öğretici Metinler (Edebiyat 9. Sınıf)
-Tarih İçinde Türk Edebiyatı
-Destan Dönemi Türk Edebiyatı
-İslam Uygarlığı Çevresinde Gelişen Türk Edebiyatı
-Batı Tesirindeki Türk Edebiyatına Giriş (Yenileşme Dönemi Türk Edebiyatı)
-Tanzimat Dönemi Edebiyatı (1860-1896)
-Servet-i Fünun Edebiyatı (Edebiyat-ı Cedide) (1896-1901) ve Fecr-i Ati Topluluğu (1909-1912)
-Milli Edebiyat Dönemi (1911-1923)
-Cumhuriyet Dönemi Türk Edebiyatı (1923-…)
-Cumhuriyet Döneminde Öğretici Metinler
-Cumhuriyet Döneminde Coşku ve Heyecanı Dile Getiren Metinler (Şiir)
-Cumhuriyet Döneminde Olay Çevresinde Oluşan Edebi Metinler
+* Güzel Sanatlar ve Edebiyat
+* Coşku ve Heyecan Dile Getiren Metinler (Şiir)
+* Olay Çevresinde Oluşan Edebi Metinler
+* Öğretici Metinler (Edebiyat 9. Sınıf)
+* Tarih İçinde Türk Edebiyatı
+* Destan Dönemi Türk Edebiyatı
+* İslam Uygarlığı Çevresinde Gelişen Türk Edebiyatı
+* Batı Tesirindeki Türk Edebiyatına Giriş (Yenileşme Dönemi Türk Edebiyatı)
+* Tanzimat Dönemi Edebiyatı (1860-1896)
+* Servet-i Fünun Edebiyatı (Edebiyat-ı Cedide) (1896-1901) ve Fecr-i Ati Topluluğu (1909-1912)
+* Milli Edebiyat Dönemi (1911-1923)
+* Cumhuriyet Dönemi Türk Edebiyatı (1923-…)
+* Cumhuriyet Döneminde Öğretici Metinler
+* Cumhuriyet Döneminde Coşku ve Heyecanı Dile Getiren Metinler (Şiir)
+* Cumhuriyet Döneminde Olay Çevresinde Oluşan Edebi Metinler
 
 #### Tarih
 
-Tarih Bilimine Giriş
-Uygarlığın Doğuşu ve İlk Uygarlıklar
-İlk Türk Devletleri
-İslam Tarihi ve Uygarlığı
-Türk - İslam Devletleri
-Ortaçağda Avrupa
-Türkiye Tarihi
-Beylikten Devlete (1300-1453)
-Dünya Gücü: Osmanlı Devleti (1453-1600)
-Osmanlı Kültür ve Uygarlığı
-Yeni Çağda Avrupa
-Arayış Yılları (17.yy)
-Yüzyılda Diplomasi ve Değişim
-Yakın Çağ Avrupası
-En Uzun Yüzyıl (1800-1922)
-1881’den 1919’a Mustafa Kemal
-Milli Mücadelenin Hazırlık Dönemi
-Kurtuluş Savaşında Cepheler
-Türk İnkılabı
-Atatürkçülük ve Atatürk İlkeleri
-Atatürk Dönemi Dış Politika
-Atatürk’ün Ölümü
-Yüzyılın Başlarında Dünya
-İkinci Dünya Savaşı
+* Tarih Bilimine Giriş
+* Uygarlığın Doğuşu ve İlk Uygarlıklar
+* İlk Türk Devletleri
+* İslam Tarihi ve Uygarlığı
+* Türk - İslam Devletleri
+* Ortaçağda Avrupa
+* Türkiye Tarihi
+* Beylikten Devlete (1300-1453)
+* Dünya Gücü: Osmanlı Devleti (1453-1600)
+* Osmanlı Kültür ve Uygarlığı
+* Yeni Çağda Avrupa
+* Arayış Yılları (17.yy)
+* Yüzyılda Diplomasi ve Değişim
+* Yakın Çağ Avrupası
+* En Uzun Yüzyıl (1800-1922)
+* 1881’den 1919’a Mustafa Kemal
+* Milli Mücadelenin Hazırlık Dönemi
+* Kurtuluş Savaşında Cepheler
+* Türk İnkılabı
+* Atatürkçülük ve Atatürk İlkeleri
+* Atatürk Dönemi Dış Politika
+* Atatürk’ün Ölümü
+* Yüzyılın Başlarında Dünya
+* İkinci Dünya Savaşı
 
 #### Coğrafya
 
-Doğa ve İnsan
-Coğrafi Konum
-Dünya’nın Şekli ve Hareketleri
-Haritalar
-Atmosfer ve İklim
-Yerin Yapısı ve İç Kuvvetler
-Yeryüzünün Biçimlenmesi: Dış Kuvvetler
-Nüfus ve Yerleşme
-Mekânsal Bir Sentez: Türkiye
-Bölgeler ve Ülkeler
-Çevre ve Toplum
+* Doğa ve İnsan
+* Coğrafi Konum
+* Dünya’nın Şekli ve Hareketleri
+* Haritalar
+* Atmosfer ve İklim
+* Yerin Yapısı ve İç Kuvvetler
+* Yeryüzünün Biçimlenmesi: Dış Kuvvetler
+* Nüfus ve Yerleşme
+* Mekânsal Bir Sentez: Türkiye
+* Bölgeler ve Ülkeler
+* Çevre ve Toplum
 
 #### Felsefe
 
-Felsefenin Konusu ve Bilgi Türleri
-Bilgi Felsefesi
-Varlık Felsefesi
-Ahlak Felsefesi
-Sanat Felsefesi
-Din Felsefesi
-Siyaset Felsefesi
-Bilim Felsefesi
+* Felsefenin Konusu ve Bilgi Türleri
+* Bilgi Felsefesi
+* Varlık Felsefesi
+* Ahlak Felsefesi
+* Sanat Felsefesi
+* Din Felsefesi
+* Siyaset Felsefesi
+* Bilim Felsefesi
 
 #### Din Kültürü
 
-İnsan ve Din
-Allah İnancı
-Kur’an-ı Kerim
-İslam Düşüncesi
-İslam ve İbadetler
-Hz. Muhammed’in Hayatı
-Yaşayan Dinler ve Benzer Özellikleri
+* İnsan ve Din
+* Allah İnancı
+* Kur’an-ı Kerim
+* İslam Düşüncesi
+* İslam ve İbadetler
+* Hz. Muhammed’in Hayatı
+* Yaşayan Dinler ve Benzer Özellikleri
 
 #### Psikoloji
 
-Psikoloji Bilimini Tanıyalım
-Psikolojinin Temel Süreçleri
-Öğrenme Bellek Düşünme
-Ruh Sağlığının Temelleri
+* Psikoloji Bilimini Tanıyalım
+* Psikolojinin Temel Süreçleri
+* Öğrenme Bellek Düşünme
+* Ruh Sağlığının Temelleri
 
 #### Sosyoloji
 
-Sosyolojiye Giriş
-Birey ve Toplum
-Toplumsal Yapı
-Toplumsal Değişme ve Gelişme
-Toplum ve Kültür
-Toplumsal Kurumlar
+* Sosyolojiye Giriş
+* Birey ve Toplum
+* Toplumsal Yapı
+* Toplumsal Değişme ve Gelişme
+* Toplum ve Kültür
+* Toplumsal Kurumlar
 
 #### Yabancı Dil
 
-Kelime Bilgisi
-Dilbilgisi
-Boşluk Doldurma
-Cümleyi Tamamlama
-Yabancı Dil / TR Cümlenin Karşılığını Bulma
-Paragraf
-Anlamca Yakın Cümleyi Bulma
-Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma
-Verilen Durumda Söylenecek İfadeli Bulma
-Diyalog Tamamlama
-Anlam Bütünlüğünü Bozan Cümleyi Bulma
+* Kelime Bilgisi
+* Dilbilgisi
+* Boşluk Doldurma
+* Cümleyi Tamamlama
+* Yabancı Dil / TR Cümlenin Karşılığını Bulma
+* Paragraf
+* Anlamca Yakın Cümleyi Bulma
+* Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma
+* Verilen Durumda Söylenecek İfadeli Bulma
+* Diyalog Tamamlama
+* Anlam Bütünlüğünü Bozan Cümleyi Bulma
 
 ### LGS Sınavı
 
@@ -328,90 +328,90 @@ LGS sınavına hazırlanan kişinin sorumlu olduğu dersler
 
 #### Türkçe
 
-Sözcükte Anlam
-Cümlede Anlam
-Deyimler ve Atasözleri
-Parçada Anlam 
-Ses Bilgisi
-Yazım Kuralları
-Noktalama İşaretleri
-Fiilimsi
-Cümlenin Ögeleri
-Cümle Vurgusu
-Fiillerde Çatı
-Cümle Çeşitleri
-Anlatım Bozuklukları
-Söz Sanatları
-Yazı (Metin) Türleri
+* Sözcükte Anlam
+* Cümlede Anlam
+* Deyimler ve Atasözleri
+* Parçada Anlam 
+* Ses Bilgisi
+* Yazım Kuralları
+* Noktalama İşaretleri
+* Fiilimsi
+* Cümlenin Ögeleri
+* Cümle Vurgusu
+* Fiillerde Çatı
+* Cümle Çeşitleri
+* Anlatım Bozuklukları
+* Söz Sanatları
+* Yazı (Metin) Türleri
 
 #### Matematik
 
-Çarpanlar ve Katlar
-Üslü İfadeler
-Kareköklü İfadeler
-Veri Analizi
-Basit Olayların Olma Olasılığı
-Cebirsel İfadeler ve Özdeşlikler
-Doğrusal Denklemler
-Eşitsizlikler
-Üçgenler
-Eşlik Benzerlik
-Dönüşüm Geometrisi
-Geometrik Cisimler
+* Çarpanlar ve Katlar
+* Üslü İfadeler
+* Kareköklü İfadeler
+* Veri Analizi
+* Basit Olayların Olma Olasılığı
+* Cebirsel İfadeler ve Özdeşlikler
+* Doğrusal Denklemler
+* Eşitsizlikler
+* Üçgenler
+* Eşlik Benzerlik
+* Dönüşüm Geometrisi
+* Geometrik Cisimler
 
 #### Fen Bilimleri
 
-Mevsimler ve İklim
-DNA ve Genetik Kod
-Basınç
-Madde ve Endüstri
-Basit Makineler
-Enerji Dönüşümleri ve Çevre Bilimi
-Elektrik Yükleri ve Elektrik Enerjisi
+* Mevsimler ve İklim
+* DNA ve Genetik Kod
+* Basınç
+* Madde ve Endüstri
+* Basit Makineler
+* Enerji Dönüşümleri ve Çevre Bilimi
+* Elektrik Yükleri ve Elektrik Enerjisi
 
 #### İnkılap Tarihi
 
-Bir Kahraman Doğuyor
-Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar
-Milli Bir Destan: Ya İstiklal Ya Ölüm!
-Atatürkçülük ve Çağdağlaşan Türkiye
-Demokratikleşme Çabaları
-Atatürk Dönemi Türk Dış Politikası
-Atatürk'ün Ölümü ve Sonrası
+* Bir Kahraman Doğuyor
+* Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar
+* Milli Bir Destan: Ya İstiklal Ya Ölüm!
+* Atatürkçülük ve Çağdağlaşan Türkiye
+* Demokratikleşme Çabaları
+* Atatürk Dönemi Türk Dış Politikası
+* Atatürk'ün Ölümü ve Sonrası
 
 #### Din Kültürü
 
-Kader İnancı
-Zekat ve Sadaka
-Din ve Hayat
-Hz.Muhammed'in Örnekliği
-Kur'an-ı Kerim ve Özellikleri
+* Kader İnancı
+* Zekat ve Sadaka
+* Din ve Hayat
+* Hz.Muhammed'in Örnekliği
+* Kur'an-ı Kerim ve Özellikleri
 
 #### İngilizce
 
-Friendship
-Teen Life
-In The Kitchen
-On The Phone 
-The Internet
-Adventures
-Tourism
-Chores
-Science
-Natural Forces
+* Friendship
+* Teen Life
+* In The Kitchen
+* On The Phone 
+* The Internet
+* Adventures
+* Tourism
+* Chores
+* Science
+* Natural Forces
 
 #### Yabancı Dil
 
-Dilbilgisi (Tenses, Conjunctions, Prepositions, Quantifiers) 
-Cloze Test (Boşluk Doldurma)
-Cümle Tamamlama 
-Çeviri (Tr-Eng ve Eng-Tr) 
-Paragraf Soruları
-Anlamca En Yakın Cümleyi Bulma 
-Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma
-Verilen Durumda Söylenecek İfadeyi Bulma
-Diyalog Tamamlama
-Anlam Bütünlüğünü Bozan Cümleyi Bulma Vocabulary (Kelime Bilgisi)
+* Dilbilgisi (Tenses, Conjunctions, Prepositions, Quantifiers) 
+* Cloze Test (Boşluk Doldurma)
+* Cümle Tamamlama 
+* Çeviri (Tr-Eng ve Eng-Tr) 
+* Paragraf Soruları
+* Anlamca En Yakın Cümleyi Bulma 
+* Paragrafta Anlam Bütünlüğünü Sağlayacak Cümleyi Bulma
+* Verilen Durumda Söylenecek İfadeyi Bulma
+* Diyalog Tamamlama
+* Anlam Bütünlüğünü Bozan Cümleyi Bulma Vocabulary (Kelime Bilgisi)
 
 ## Tema Geliştirici Notu
 
