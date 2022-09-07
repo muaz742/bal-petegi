@@ -53,6 +53,7 @@ daha fazla bilgi için ~\docs\petek.js.md
 */
 var petek = {
     "zaman": {
+        // zaman konumları hesaplama işlemleri
         "simdi": new Date(),
         "gecenHafta": function () {
             var gecenHafta = new Date();
@@ -66,6 +67,7 @@ var petek = {
         }
     },
     "navbar": {
+        // navbar işlemleri
         "hitap": function () {
             petek.veri.on('value', function (snapshot) {
                 try {
@@ -86,6 +88,7 @@ var petek = {
         }
     },
     "hasilat": {
+        // hasilat ekranı işlemleri
         "gunlukHasilatSoru": function () {
             // petek.veri ile veriler çekilecek
             petek.veri.on('value', function (snapshot) {
@@ -648,6 +651,7 @@ var petek = {
         }
     },
     "soruGir": {
+        // soru gir ekranı işlemleri
         "soruSayisiGir": function () {
             petek.veri.on('value', function (snapshot) {
                 try {
@@ -1594,6 +1598,7 @@ var petek = {
         }
     },
     "profil": {
+        // profil ekranı işlemleri
         "kaydet": function (name, surname, city, grade, birthdate) {
             firebase.database().ref().child("users").child(petek.veri.key).update({
                 name: name,
@@ -1605,6 +1610,7 @@ var petek = {
         }
     },
     "girisYap": {
+        // giriş yap ekranı işlemleri
         "girisYap": function (email, password) {
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
                 .then(function () {
@@ -1636,6 +1642,7 @@ var petek = {
         }
     },
     "f": {
+        // petek işleyişinde kullanılan fonksiyonlar
         "soruSil": function (key) {
             firebase.database().ref("users/" + petek.veri.key).child("records").child(key).remove();
         },
@@ -1746,6 +1753,7 @@ var petek = {
         }
     },
     "ui": {
+        // arayüz güncelleme işlemleri
         "gunlukGrafik": function (tarihler, soruSayilari) {
             /* her tarihe ait soru sayısını çizgi grafikte gösterir */
             var ctx = document.getElementById('kisiGecmisi').getContext('2d');
@@ -2117,7 +2125,7 @@ var petek = {
             });
         },
         "guncelleAtif": function (isim, soyisim) {
-            // ekran üstünde kullanıcı adı ve soyadını göster
+            // ekran üstünde kullanıcı adı ve soyadını gösterir
             var kisi = isim + " " + soyisim;
             var mesaj = 'Süper Arı ' + kisi;
             $('#ekranAtif').text(mesaj);
